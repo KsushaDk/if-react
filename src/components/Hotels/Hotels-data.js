@@ -1,9 +1,4 @@
-import React from 'react';
-import './App.css';
-import PasteHotelsItems from '../Hotels/Hotels';
-
-function App() {
-  const data = [
+const data = [
     {
       id: '71ce9eac-e9b9-44f0-a342-9ff0b565f3b7',
       name: 'Hotel Leopold',
@@ -62,13 +57,44 @@ function App() {
     },
   ];
 
-  return (
-    <div className="hotels">
-      <h2 className="hotels__title">Homes guests loves</h2>
+  function HotelsData(props) {
+      return data.slice(0, 4);
+  }
+  
 
-      <PasteHotelsItems data={data.slice(0, 4)}/>
-    </div>
-  );
-}
+   {/* <div>
+        <HotelsData key={props.id} name={props.name} city={props.city} country={props.coumtry} imageUrl={props.imageUrl}/>
+        <img className="hotels__carrousel_img"
+          src={props.HotelsData.imageUrl}
+          alt = 'hi'
+        />
+        <p className="hotels__carrousel_p">{props.HotelsData.name}</p>
+        <p className="hotels__carrousel_grey">{props.HotelsData.cointry}, {props.HotelsData.city}</p>
+     </div>
 
-export default App;
+     <div>
+        <HotelsData key={props.id} name={props.name} city={props.city} country={props.coumtry} imageUrl={props.imageUrl}/>
+        <img className="hotels__carrousel_img"
+          src={props.HotelsData.imageUrl}
+          alt = 'hi'
+        />
+        <p className="hotels__carrousel_p">{props.HotelsData.name}</p>
+        <p className="hotels__carrousel_grey">{props.HotelsData.cointry}, {props.HotelsData.city}</p>
+     </div>
+
+     <div>
+        <HotelsData key={props.id} name={props.name} city={props.city} country={props.coumtry} imageUrl={props.imageUrl}/>
+        <img className="hotels__carrousel_img"
+          src={props.HotelsData.imageUrl}
+          alt = 'hi'
+        />
+        <p className="hotels__carrousel_p">{props.HotelsData.name}</p>
+        <p className="hotels__carrousel_grey">{props.HotelsData.cointry}, {props.HotelsData.city}</p>
+     </div>
+
+     <div>
+        <HotelsData key={props.id} name={props.name} city={props.city} country={props.coumtry} imageUrl={props.imageUrl}/>
+        <img className="hotels__carrousel_img"
+          src={props.HotelsData.imageUrl}
+          alt = 'hi'
+        /> */}
