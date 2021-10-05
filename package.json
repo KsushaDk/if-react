@@ -17,7 +17,7 @@
     "build": "webpack --config configs/webpack.prod.js",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lint": "eslint ./src/index.js"
+    "lint": "eslint --fix ./src --ext .js,.jsx"
   },
   "eslintConfig": {
     "extends": [
