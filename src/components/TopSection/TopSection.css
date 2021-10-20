@@ -1,0 +1,128 @@
+.top-section {
+  margin: 0px auto;
+  padding: 51px 104px 120px 104px;
+  background-size: cover;
+  font-family: "Roboto" sans-serif;
+  color: #ffffff;
+}
+.top-section__navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 200px;
+}
+.navigation_group {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 24px;
+  text-decoration: none;
+}
+.navigation_div {
+  margin-left: 25px;
+  position: relative;
+}
+.navigation_div:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #f5bd41;
+  top: 38px;
+  left: 0px;
+}
+.navigation_img {
+  margin-left: 45px;
+}
+.top-section__title {
+  line-height: 59px;
+  font-weight: 500;
+  font-size: 50px;
+  text-align: left;
+  margin: 0px 0px 100px;
+}
+.top-section__form {
+  display: flex;
+}
+.form__div-destination {
+  width: 30%;
+}
+.form__div-date {
+  width: 30%;
+  display: flex;
+}
+.form__div-date-item {
+  width: 50%;
+}
+.form__div-people {
+  width: 30%;
+  display: flex;
+  padding-top: 44px;
+}
+.form__label {
+  line-height: 21px;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 24px;
+  padding-left: 24px;
+  display: block;
+  box-sizing: border-box;
+}
+.form__input {
+  width: 100%;
+  padding: 0px 0px 0px 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #383838;
+  border: 3px solid #f3f3f4;
+  outline: none;
+  height: 64px;
+  box-sizing: border-box;
+}
+.form__input:focus {
+  border: 3px solid #f5bd41;
+}
+.form__input-destination {
+  border-radius: 8px 0px 0px 8px;
+  border-right: none;
+}
+.form__input-date {
+  border-left: none;
+  border-right: none;
+}
+.form__input-people {
+  border-left: none;
+}
+.form__input-people-last {
+  border-radius: 0px 8px 8px 0px;
+  border-left: none;
+}
+
+.form__button {
+  width: 10%;
+  height: 64px;
+  margin-top: 44px;
+  background: #3077c6;
+  color: #ffffff;
+  border-radius: 8px;
+  border: none;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+
+.top-section__apps {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+}
+.top-section__apps-apple {
+  width: 120px;
+  height: 40px;
+  margin-left: 8px;
+}
+.top-section__apps-google {
+  width: 135px;
+  height: 40px;
+  margin-right: 8px;
+}
