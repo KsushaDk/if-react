@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import _ from 'lodash'
 
-import TopSection from '../TopSection/TopSection.jsx'
-import HotelsItems from '../Hotels/HotelsItems.jsx'
+import TopSection from './TopSection/TopSection.jsx'
+import HotelsItems from './Hotels/HotelsItems.jsx'
 
-import hotels from './dataHotels'
+import hotels from '../constants/dataHotels'
 
 function App() {
   const [state, setState] = useState([])

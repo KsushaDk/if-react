@@ -1,18 +1,16 @@
 import React from 'react'
 
-import logo from '../../../public/images/logo.svg'
-import night from '../../../public/images/night.svg'
-import user from '../../../public/images/user.svg'
+// import logo from '../../../public/images/logo.svg'
 
 function Navigation() {
   return (
     <div className="top-section__navigation">
-      <img src={logo} alt={'logo'} />
+      <div className="navigation-logo" />
       <div className="navigation_group">
-        <div className="navigation_div">Stays</div>
-        <div className="navigation_div">Attractions</div>
-        <img className="navigation_img" src={night} alt={'night'} />
-        <img className="navigation_img" src={user} alt={'user'} />
+        <div className="navigation_div-text">Stays</div>
+        <div className="navigation_div-text">Attractions</div>
+        <div className="navigation_div-picture-night" />
+        <div className="navigation_div-picture-user" />
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
-const entryPath = path.resolve(__dirname, '../src/index.js');
-const outputPath = path.resolve(__dirname, '../dist');
+const entryPath = path.resolve(__dirname, '../src/index.js')
+const outputPath = path.resolve(__dirname, '../dist')
 
 module.exports = {
   entry: entryPath,
@@ -11,41 +11,47 @@ module.exports = {
     filename: 'app[hash].js',
   },
   resolve: {
-    extensions: [
-    '.js',
-    '.jsx'
-    ]
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
-    {
+      {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader'
-    },
-    {
+        use: 'babel-loader',
+      },
+      {
         test: /\.html$/,
-        use: 'html-loader'
+        use: 'html-loader',
       },
       {
         test: /\.css$/,
-        use:
-          [
-            'style-loader',
-            'css-loader'
-          ]
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|jpe?g|gif)$/i,
+
+        dependency: { not: ['url'] },
         use: [
-          'file-loader'
-        ]
-      }
-    ]
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      // {
+      //   test: /\.(png|svg|jpg|gif)$/,
+      //   use: [
+      //     'file-loader'
+      //   ]
+      // }
+    ],
   },
   plugins: [
     new HTMLWebpackPlugin({
       inject: true,
-      template: './public/index.html'
-    })
-  ]
-};
+      template: './public/index.html',
+    }),
+  ],
+}

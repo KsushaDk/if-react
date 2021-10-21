@@ -6,7 +6,7 @@ import InputDestination from './InputDestination.jsx'
 function Form(props) {
   return (
     <>
-      <form className="top-section__form" action="" method="GET">
+      <form className="top-section__form">
         <InputDestination onHotelChange={props.setHotelData} />
         <div className="form__div-date">
           <div className="form__div-date-item">

@@ -7,11 +7,9 @@ import Navigation from './Navigation.jsx'
 import Form from './Form.jsx'
 import Store from './Store.jsx'
 
-import bg from '../../../public/images/bg_header.svg'
-
 function TopSection(props) {
   return (
-    <div className="top-section" style={{ backgroundImage: `url(${bg})` }}>
+    <div className="top-section">
       <Navigation />
       <h2 className="top-section__title">
         Discover stays
