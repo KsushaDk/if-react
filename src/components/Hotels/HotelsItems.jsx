@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import HotelItem from './HotelItem.jsx'
 import './Hotels.css'
 
-function HotelsItems(props) {
+function HotelsItems({ dataHotels, title }) {
   return (
     <>
-      <h2 className="hotels__title">{props.title}</h2>
+      <h2 className="hotels__title">{title}</h2>
       <div className="hotels__carrousel">
-        {props.data.map((item) => {
+        {dataHotels.map((item) => {
           return <HotelItem item={item} key={item.id} />
         })}
       </div>
@@ -18,7 +18,7 @@ function HotelsItems(props) {
 }
 
 HotelsItems.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  dataHotels: PropTypes.arrayOf(PropTypes.object).isRequired,
   title: PropTypes.string,
 }
 

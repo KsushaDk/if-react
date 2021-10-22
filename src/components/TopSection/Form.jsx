@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import InputDestination from './InputDestination.jsx'
 
-function Form(props) {
+function Form({ setHotelData }) {
   return (
     <>
       <form className="top-section__form">
-        <InputDestination onHotelChange={props.setHotelData} />
+        <InputDestination setHotelData={setHotelData} />
         <div className="form__div-date">
           <div className="form__div-date-item">
             <label className="form__label" htmlFor="in">

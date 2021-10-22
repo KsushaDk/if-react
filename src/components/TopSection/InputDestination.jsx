@@ -1,7 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
-function InputDestination({ onHotelChange }) {
+import dataHotels from '../../constants/dataHotels'
+
+function InputDestination({ setHotelData }) {
+  const onInputChange = (e) => {
+    setHotelData(
+      _.filter(
+        dataHotels,
+        (item) =>
+          item.name === `${e.target.value}` ||
+          item.city === `${e.target.value}` ||
+          item.country === `${e.target.value}`,
+      ),
+    )
+  }
+
   return (
     <div className="form__div-destination">
       <label htmlFor="search" className="form__label">
@@ -13,14 +28,14 @@ function InputDestination({ onHotelChange }) {
         type="text"
         name="search"
         placeholder="New York"
-        onChange={(event) => onHotelChange(event.target.value)}
+        onChange={onInputChange}
       />
     </div>
   )
 }
 
 InputDestination.propTypes = {
-  onHotelChange: PropTypes.func,
+  setHotelData: PropTypes.func,
 }
 
 export default InputDestination
