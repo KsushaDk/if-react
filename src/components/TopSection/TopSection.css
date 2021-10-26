@@ -76,6 +76,9 @@
   display: flex;
   padding-top: 44px;
 }
+.form__div-btn {
+  width: 10%;
+}
 .form__label {
   line-height: 21px;
   font-weight: 400;
@@ -87,7 +90,8 @@
 }
 .form__input {
   width: 100%;
-  padding: 0px 0px 0px 24px;
+  height: 64px;
+  padding-left: 24px;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -95,7 +99,6 @@
   color: #383838;
   border: 3px solid #f3f3f4;
   outline: none;
-  height: 64px;
   box-sizing: border-box;
 }
 .form__input:focus {
@@ -117,9 +120,7 @@
   border-left: none;
 }
 
-.form__button {
-  width: 10%;
-  height: 64px;
+.form__input-btn {
   margin-top: 44px;
   background: #3077c6;
   color: #ffffff;
@@ -127,6 +128,7 @@
   border: none;
   font-size: 24px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .top-section__apps {

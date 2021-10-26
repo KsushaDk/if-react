@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <TopSection setHotelData={setHotelData} />
+      <TopSection data={data} setHotelData={setHotelData} />
 
       <div className="hotels">
         {data.length ? (
