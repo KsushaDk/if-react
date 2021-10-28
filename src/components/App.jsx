@@ -6,17 +6,22 @@ import HotelsItems from './Hotels/HotelsItems.jsx'
 import hotels from '../constants/dataHotels'
 
 function App() {
-  const [data, setHotelData] = useState([])
+  const [hotelData, setHotelData] = useState([])
+
+  const filteredHotels = hotels.filter(
+    (item) =>
+      item.name === `${hotelData}` ||
+      item.city === `${hotelData}` ||
+      item.country === `${hotelData}`,
+  )
 
   return (
     <>
-      <TopSection data={data} setHotelData={setHotelData} />
+      <TopSection data={hotelData} setHotelData={setHotelData} />
 
       <div className="hotels">
-        {data.length ? (
-          <HotelsItems dataHotels={data} title={'Available hotels'} />
-        ) : (
-          <></>
+        {!!hotelData.length && (
+          <HotelsItems dataHotels={filteredHotels} title={'Available hotels'} />
         )}
 
         <HotelsItems

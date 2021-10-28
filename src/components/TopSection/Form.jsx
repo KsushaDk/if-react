@@ -4,17 +4,20 @@ import PropTypes from 'prop-types'
 import InputDestination from './InputDestination.jsx'
 
 function Form({ data, setHotelData }) {
-  const [newData, setNewData] = useState(data)
+  const [destination, setDestination] = useState(data)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setHotelData(newData)
+    setHotelData(destination)
   }
 
   return (
     <>
       <form className="top-section__form" onSubmit={handleSubmit}>
-        <InputDestination setNewData={setNewData} />
+        <InputDestination
+          value={destination}
+          onChange={(e) => setDestination(e.target.value)}
+        />
 
         <div className="form__div-date">
           <div className="form__div-date-item">
