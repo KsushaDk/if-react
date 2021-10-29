@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import InputDestination from './InputDestination.jsx'
+import InputsDate from './InputDate.jsx'
+import InputPeople from './InputPeople.jsx'
 
-function Form({ data, setHotelData }) {
-  const [destination, setDestination] = useState(data)
+function Form({ hotelData, setHotelData }) {
+  const [destination, setDestination] = useState(hotelData)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,47 +20,8 @@ function Form({ data, setHotelData }) {
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
         />
-
-        <div className="form__div-date">
-          <div className="form__div-date-item">
-            <label className="form__label" htmlFor="in">
-              Check-in
-            </label>
-            <input
-              className="form__input form__input-date"
-              id="in"
-              type="date"
-            />
-          </div>
-          <div className="form__div-date-item">
-            <label className="form__label" htmlFor="out">
-              Check-out
-            </label>
-            <input
-              className="form__input form__input-date"
-              id="out"
-              type="date"
-            />
-          </div>
-        </div>
-
-        <div className="form__div-people">
-          <input
-            className="form__input form__input-people"
-            type="text"
-            placeholder="Adults"
-          />
-          <input
-            className="form__input form__input-people"
-            type="text"
-            placeholder="Children"
-          />
-          <input
-            className="form__input form__input-people-last"
-            type="text"
-            placeholder="Room"
-          />
-        </div>
+        <InputsDate />
+        <InputPeople />
         <div className="form__div-btn">
           <input
             className="form__input form__input-btn"
@@ -73,7 +36,7 @@ function Form({ data, setHotelData }) {
 
 Form.propTypes = {
   setHotelData: PropTypes.func,
-  data: PropTypes.arrayOf(PropTypes.object),
+  hotelData: PropTypes.string,
 }
 
 export default Form

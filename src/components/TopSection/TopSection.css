@@ -60,24 +60,20 @@
 }
 .top-section__form {
   display: flex;
+  align-items: flex-end;
 }
 .form__div-destination {
   width: 30%;
 }
 .form__div-date {
-  width: 30%;
-  display: flex;
-}
-.form__div-date-item {
-  width: 50%;
+  width: 25%;
 }
 .form__div-people {
   width: 30%;
   display: flex;
-  padding-top: 44px;
 }
 .form__div-btn {
-  width: 10%;
+  width: 15%;
 }
 .form__label {
   line-height: 21px;
@@ -90,8 +86,7 @@
 }
 .form__input {
   width: 100%;
-  height: 64px;
-  padding-left: 24px;
+  padding: 0px 0px 0px 24px;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -99,6 +94,7 @@
   color: #383838;
   border: 3px solid #f3f3f4;
   outline: none;
+  height: 64px;
   box-sizing: border-box;
 }
 .form__input:focus {
@@ -121,14 +117,17 @@
 }
 
 .form__input-btn {
-  margin-top: 44px;
-  background: #3077c6;
-  color: #ffffff;
+  padding: 0px;
   border-radius: 8px;
   border: none;
   font-size: 24px;
   box-sizing: border-box;
   cursor: pointer;
+  background: #3077c6;
+  color: #ffffff;
+}
+.form__input-btn:focus {
+  border: none;
 }
 
 .top-section__apps {
