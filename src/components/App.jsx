@@ -6,9 +6,7 @@ import HotelsItems from './Hotels/HotelsItems.jsx'
 function App() {
   const [hotelData, setHotelData] = useState('')
 
-  console.log('props first', hotelData, hotels, availableHotels)
-
-  const [hotels, setHotels] = useState([])
+  const [defaultHotels, setHotels] = useState([])
   const [availableHotels, setAvailableHotels] = useState(null)
 
   const [error, setError] = useState(null)
@@ -59,12 +57,9 @@ function App() {
 
         <div className="hotels">
           {!!availableHotels && (
-            <HotelsItems
-              availableHotels={availableHotels}
-              title={'Available hotels'}
-            />
+            <HotelsItems hotels={availableHotels} title={'Available hotels'} />
           )}
-          <HotelsItems hotels={hotels} title={'Homes guests loves'} />
+          <HotelsItems hotels={defaultHotels} title={'Homes guests loves'} />
         </div>
       </>
     )
