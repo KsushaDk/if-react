@@ -6,19 +6,34 @@ import HotelsItems from './Hotels/HotelsItems.jsx'
 function App() {
   const [hotelData, setHotelData] = useState('')
 
+  console.log('props first', hotelData, hotels, availableHotels)
+
+  const [hotels, setHotels] = useState([])
   const [availableHotels, setAvailableHotels] = useState(null)
+
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // я не знаю, где правильнее написать про загрузку :)
+  useEffect(() => {
+    fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true)
+          setHotels(result)
+        },
+        (error) => {
+          setIsLoaded(true)
+          setError(error)
+        },
+      )
+  }, [])
 
   useEffect(() => {
     if (hotelData) {
       const url = new URL('https://fe-student-api.herokuapp.com/api/hotels')
       url.searchParams.set('search', `${hotelData}`)
-      fetch(`${url}`, {
-        method: 'GET',
-      })
+      fetch(`${url}`)
         .then((response) => response.json())
         .then(
           (result) => {
@@ -35,6 +50,8 @@ function App() {
 
   if (error) {
     return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
   } else {
     return (
       <>
@@ -47,7 +64,7 @@ function App() {
               title={'Available hotels'}
             />
           )}
-          <HotelsItems title={'Homes guests loves'} />
+          <HotelsItems hotels={hotels} title={'Homes guests loves'} />
         </div>
       </>
     )
