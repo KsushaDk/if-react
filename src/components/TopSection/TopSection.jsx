@@ -7,7 +7,7 @@ import Navigation from './Navigation.jsx'
 import Form from './Form.jsx'
 import Store from './Store.jsx'
 
-function TopSection({ data, setHotelData }) {
+function TopSection({ hotelData, setHotelData }) {
   return (
     <div className="top-section">
       <Navigation />
@@ -16,7 +16,7 @@ function TopSection({ data, setHotelData }) {
         <br />
         to live, work or just relax
       </h2>
-      <Form data={data} setHotelData={setHotelData} />
+      <Form hotelData={hotelData} setHotelData={setHotelData} />
       <Store />
     </div>
   )
@@ -24,7 +24,7 @@ function TopSection({ data, setHotelData }) {
 
 TopSection.propTypes = {
   setHotelData: PropTypes.func,
-  data: PropTypes.arrayOf(PropTypes.object),
+  hotelData: PropTypes.string,
 }
 
 export default TopSection
