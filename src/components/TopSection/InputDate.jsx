@@ -1,16 +1,12 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-function InputsDate() {
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
-
-  const onChange = (dates) => {
-    const [start, end] = dates
-    setStartDate(start)
-    setEndDate(end)
-  }
+function InputDate({ dates, setDates }) {
+  const [startDate, setStartDate] = useState(dates.startDate)
+  const [endDate, setEndDate] = useState(dates.endDate)
 
   return (
     <div className="form__div-date">
@@ -19,7 +15,13 @@ function InputsDate() {
         className="form__input"
         placeholderText="Check-in — Check-out"
         minDate={new Date()}
-        onChange={onChange}
+        onChange={(currentDates) => {
+          const [start, end] = currentDates
+          setStartDate(start)
+          setEndDate(end)
+          setDates({ ...dates, startDate: startDate })
+          setDates({ ...dates, endDate: endDate })
+        }}
         startDate={startDate}
         endDate={endDate}
         selectsRange
@@ -28,5 +30,42 @@ function InputsDate() {
     </div>
   )
 }
+InputDate.propTypes = {
+  setDates: PropTypes.func,
+  dates: PropTypes.object,
+}
 
-export default InputsDate
+export default InputDate
+
+// function InputDate({ date, setDate }) {
+//   const [startDate, setStartDate] = useState(date.startDate)
+//   const [endDate, setEndDate] = useState(date.endDate)
+
+//   const onDateChange = (dates) => {
+//     const [start, end] = dates
+//     setStartDate(start)
+//     setEndDate(end)
+//   }
+
+//   return (
+//     <div className="form__div-date">
+//       <label className="form__label">Check-in-Check-out </label>
+//       <DatePicker
+//         className="form__input"
+//         placeholderText="Check-in — Check-out"
+//         minDate={new Date()}
+//         onChange={onDateChange}
+//         startDate={startDate}
+//         endDate={endDate}
+//         selectsRange
+//         monthsShown={2}
+//       />
+//     </div>
+//   )
+// }
+// InputDate.propTypes = {
+//   setDate: PropTypes.func,
+//   date: PropTypes.object,
+// }
+
+// export default InputDate

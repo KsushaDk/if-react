@@ -1,25 +1,31 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-function InputPeople() {
+function InputPeople({ value, onClick }) {
   return (
-    <div className="form__div-people">
+    <div className="form__div-people" onClick={onClick}>
       <input
         className="form__input form__input-people"
         type="text"
-        placeholder="Adults"
+        placeholder={`${value.adults}` + ' ' + 'Adults'}
       />
       <input
         className="form__input form__input-people"
         type="text"
-        placeholder="Children"
+        placeholder={`${value.children}` + ' ' + 'Children'}
       />
       <input
         className="form__input form__input-people-last"
         type="text"
-        placeholder="Room"
+        placeholder={`${value.rooms}` + ' ' + 'Room'}
       />
     </div>
   )
+}
+
+InputPeople.propTypes = {
+  value: PropTypes.object,
+  onClick: PropTypes.func,
 }
 
 export default InputPeople
