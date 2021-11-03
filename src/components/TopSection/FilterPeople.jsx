@@ -50,14 +50,10 @@ function FilterPeople({ people, setPeople }) {
   useEffect(() => {
     if (adults <= 1) {
       setDisabled({ ...isDisabled, adultsBtnDec: true })
-    } else {
-      setDisabled({ ...isDisabled, adultsBtnDec: false })
-      setDisabled({ ...isDisabled, adultsBtnInc: false })
-    }
-    if (adults >= 30) {
+    } else if (adults >= 30) {
       setDisabled({ ...isDisabled, adultsBtnInc: true })
-    } else {
-      setDisabled({ ...isDisabled, adultsBtnDec: false })
+    } else if (adults >= 1 || adults <= 30) {
+      setDisabled({ ...isDisabled, adultsBtnDec: false, adultsBtnInc: false })
     }
 
     setPeople({ ...people, adults: adults })
@@ -66,14 +62,14 @@ function FilterPeople({ people, setPeople }) {
   useEffect(() => {
     if (children <= 0) {
       setDisabled({ ...isDisabled, childrenBtnDec: true })
-    } else {
-      setDisabled({ ...isDisabled, childrenBtnDec: false })
-      setDisabled({ ...isDisabled, childrenBtnInc: false })
-    }
-    if (children >= 10) {
+    } else if (children >= 10) {
       setDisabled({ ...isDisabled, childrenBtnInc: true })
-    } else {
-      setDisabled({ ...isDisabled, childrenBtnDec: false })
+    } else if (children >= 1 || children <= 10) {
+      setDisabled({
+        ...isDisabled,
+        childrenBtnDec: false,
+        childrenBtnInc: false,
+      })
     }
 
     setPeople({ ...people, children: children })
@@ -82,14 +78,10 @@ function FilterPeople({ people, setPeople }) {
   useEffect(() => {
     if (rooms <= 1) {
       setDisabled({ ...isDisabled, roomsBtnDec: true })
-    } else {
-      setDisabled({ ...isDisabled, roomsBtnDec: false })
-      setDisabled({ ...isDisabled, roomsBtnInc: false })
-    }
-    if (rooms >= 30) {
+    } else if (rooms >= 30) {
       setDisabled({ ...isDisabled, roomsBtnInc: true })
-    } else {
-      setDisabled({ ...isDisabled, roomsBtnDec: false })
+    } else if (rooms >= 1 || rooms <= 30) {
+      setDisabled({ ...isDisabled, roomsBtnDec: false, roomsBtnInc: false })
     }
 
     setPeople({ ...people, rooms: rooms })
