@@ -9,98 +9,89 @@ function FilterPeople({ people, setPeople }) {
   const [rooms, setRooms] = useState(people.rooms)
 
   const [isDisabled, setDisabled] = useState({
-    adultsBtnDec: false,
+    adultsBtnDec: true,
     adultsBtnInc: false,
     childrenBtnDec: true,
     childrenBtnInc: false,
-    roomsBtnDec: false,
+    roomsBtnDec: true,
     roomsBtnInc: false,
   })
 
   const [selectors, setSelectors] = useState([])
 
-  const handleAdultsDec = (e) => {
-    e.preventDefault()
-    if (adults <= 2) {
-      setDisabled({ ...isDisabled, adultsBtnDec: true })
-    } else {
-      setDisabled({ ...isDisabled, adultsBtnDec: false })
-      setDisabled({ ...isDisabled, adultsBtnInc: false })
-    }
-
+  const handleAdultsDec = () => {
     setAdults((adults) => adults - 1)
   }
 
-  const handleAdultsInc = (e) => {
-    e.preventDefault()
-    if (adults >= 29) {
-      setDisabled({ ...isDisabled, adultsBtnInc: true })
-    } else {
-      setDisabled({ ...isDisabled, adultsBtnDec: false })
-    }
-
+  const handleAdultsInc = () => {
     setAdults((adults) => adults + 1)
   }
 
-  const handleChildrenDec = (e) => {
-    e.preventDefault()
-    if (children <= 1) {
-      setDisabled({ ...isDisabled, childrenBtnDec: true })
-    } else {
-      setDisabled({ ...isDisabled, childrenBtnDec: false })
-      setDisabled({ ...isDisabled, childrenBtnInc: false })
-    }
-
+  const handleChildrenDec = () => {
     setChildren((children) => children - 1)
 
     removeSelector()
   }
 
-  const handleChildrenInc = (e) => {
-    e.preventDefault()
-    if (children >= 9) {
-      setDisabled({ ...isDisabled, childrenBtnInc: true })
-    } else {
-      setDisabled({ ...isDisabled, childrenBtnDec: false })
-    }
-
+  const handleChildrenInc = () => {
     setChildren((children) => children + 1)
 
     addSelector()
   }
 
-  const handleRoomsDec = (e) => {
-    e.preventDefault()
-    if (rooms <= 2) {
+  const handleRoomsDec = () => {
+    setRooms((rooms) => rooms - 1)
+  }
+
+  const handleRoomsInc = () => {
+    setRooms((rooms) => rooms + 1)
+  }
+
+  useEffect(() => {
+    if (adults <= 1) {
+      setDisabled({ ...isDisabled, adultsBtnDec: true })
+    } else {
+      setDisabled({ ...isDisabled, adultsBtnDec: false })
+      setDisabled({ ...isDisabled, adultsBtnInc: false })
+    }
+    if (adults >= 30) {
+      setDisabled({ ...isDisabled, adultsBtnInc: true })
+    } else {
+      setDisabled({ ...isDisabled, adultsBtnDec: false })
+    }
+
+    setPeople({ ...people, adults: adults })
+  }, [adults])
+
+  useEffect(() => {
+    if (children <= 0) {
+      setDisabled({ ...isDisabled, childrenBtnDec: true })
+    } else {
+      setDisabled({ ...isDisabled, childrenBtnDec: false })
+      setDisabled({ ...isDisabled, childrenBtnInc: false })
+    }
+    if (children >= 10) {
+      setDisabled({ ...isDisabled, childrenBtnInc: true })
+    } else {
+      setDisabled({ ...isDisabled, childrenBtnDec: false })
+    }
+
+    setPeople({ ...people, children: children })
+  }, [children])
+
+  useEffect(() => {
+    if (rooms <= 1) {
       setDisabled({ ...isDisabled, roomsBtnDec: true })
     } else {
       setDisabled({ ...isDisabled, roomsBtnDec: false })
       setDisabled({ ...isDisabled, roomsBtnInc: false })
     }
-
-    setRooms((rooms) => rooms - 1)
-  }
-
-  const handleRoomsInc = (e) => {
-    e.preventDefault()
-    if (rooms >= 29) {
+    if (rooms >= 30) {
       setDisabled({ ...isDisabled, roomsBtnInc: true })
     } else {
       setDisabled({ ...isDisabled, roomsBtnDec: false })
     }
 
-    setRooms((rooms) => rooms + 1)
-  }
-
-  useEffect(() => {
-    setPeople({ ...people, adults: adults })
-  }, [adults])
-
-  useEffect(() => {
-    setPeople({ ...people, children: children })
-  }, [children])
-
-  useEffect(() => {
     setPeople({ ...people, rooms: rooms })
   }, [rooms])
 
