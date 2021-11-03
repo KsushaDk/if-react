@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Selectors from './Selectors.jsx'
@@ -11,13 +11,98 @@ function FilterPeople({ people, setPeople }) {
   const [isDisabled, setDisabled] = useState({
     adultsBtnDec: false,
     adultsBtnInc: false,
-    childrenBtnDec: false,
+    childrenBtnDec: true,
     childrenBtnInc: false,
     roomsBtnDec: false,
     roomsBtnInc: false,
   })
 
   const [selectors, setSelectors] = useState([])
+
+  const handleAdultsDec = (e) => {
+    e.preventDefault()
+    if (adults <= 2) {
+      setDisabled({ ...isDisabled, adultsBtnDec: true })
+    } else {
+      setDisabled({ ...isDisabled, adultsBtnDec: false })
+      setDisabled({ ...isDisabled, adultsBtnInc: false })
+    }
+
+    setAdults((adults) => adults - 1)
+  }
+
+  const handleAdultsInc = (e) => {
+    e.preventDefault()
+    if (adults >= 29) {
+      setDisabled({ ...isDisabled, adultsBtnInc: true })
+    } else {
+      setDisabled({ ...isDisabled, adultsBtnDec: false })
+    }
+
+    setAdults((adults) => adults + 1)
+  }
+
+  const handleChildrenDec = (e) => {
+    e.preventDefault()
+    if (children <= 1) {
+      setDisabled({ ...isDisabled, childrenBtnDec: true })
+    } else {
+      setDisabled({ ...isDisabled, childrenBtnDec: false })
+      setDisabled({ ...isDisabled, childrenBtnInc: false })
+    }
+
+    setChildren((children) => children - 1)
+
+    removeSelector()
+  }
+
+  const handleChildrenInc = (e) => {
+    e.preventDefault()
+    if (children >= 9) {
+      setDisabled({ ...isDisabled, childrenBtnInc: true })
+    } else {
+      setDisabled({ ...isDisabled, childrenBtnDec: false })
+    }
+
+    setChildren((children) => children + 1)
+
+    addSelector()
+  }
+
+  const handleRoomsDec = (e) => {
+    e.preventDefault()
+    if (rooms <= 2) {
+      setDisabled({ ...isDisabled, roomsBtnDec: true })
+    } else {
+      setDisabled({ ...isDisabled, roomsBtnDec: false })
+      setDisabled({ ...isDisabled, roomsBtnInc: false })
+    }
+
+    setRooms((rooms) => rooms - 1)
+  }
+
+  const handleRoomsInc = (e) => {
+    e.preventDefault()
+    if (rooms >= 29) {
+      setDisabled({ ...isDisabled, roomsBtnInc: true })
+    } else {
+      setDisabled({ ...isDisabled, roomsBtnDec: false })
+    }
+
+    setRooms((rooms) => rooms + 1)
+  }
+
+  useEffect(() => {
+    setPeople({ ...people, adults: adults })
+  }, [adults])
+
+  useEffect(() => {
+    setPeople({ ...people, children: children })
+  }, [children])
+
+  useEffect(() => {
+    setPeople({ ...people, rooms: rooms })
+  }, [rooms])
 
   function addSelector() {
     setSelectors([...selectors, { id: Date.now() }])
@@ -38,19 +123,7 @@ function FilterPeople({ people, setPeople }) {
             disabled={isDisabled.adultsBtnDec}
             className={isDisabled.adultsBtnDec ? 'disabled' : ''}
             value="dec"
-            onClick={(e) => {
-              e.preventDefault()
-              setAdults((adults) => adults - 1)
-
-              setPeople({ ...people, adults: adults })
-
-              if (adults <= 1) {
-                setDisabled({ ...isDisabled, adultsBtnDec: true })
-              } else {
-                setDisabled({ ...isDisabled, adultsBtnDec: false })
-                setDisabled({ ...isDisabled, adultsBtnInc: false })
-              }
-            }}
+            onClick={handleAdultsDec}
           >
             -
           </button>
@@ -59,18 +132,7 @@ function FilterPeople({ people, setPeople }) {
             disabled={isDisabled.adultsBtnInc}
             className={isDisabled.adultsBtnInc ? 'disabled' : ''}
             value="inc"
-            onClick={(e) => {
-              e.preventDefault()
-              setAdults((adults) => adults + 1)
-
-              setPeople({ ...people, adults: adults })
-
-              if (adults >= 30) {
-                setDisabled({ ...isDisabled, adultsBtnInc: true })
-              } else {
-                setDisabled({ ...isDisabled, adultsBtnDec: false })
-              }
-            }}
+            onClick={handleAdultsInc}
           >
             +
           </button>
@@ -85,21 +147,7 @@ function FilterPeople({ people, setPeople }) {
             disabled={isDisabled.childrenBtnDec}
             className={isDisabled.childrenBtnDec ? 'disabled' : ''}
             value="dec"
-            onClick={(e) => {
-              e.preventDefault()
-              setChildren((children) => children - 1)
-
-              setPeople({ ...people, children: children })
-
-              removeSelector()
-
-              if (children <= 1) {
-                setDisabled({ ...isDisabled, childrenBtnDec: true })
-              } else {
-                setDisabled({ ...isDisabled, childrenBtnDec: false })
-                setDisabled({ ...isDisabled, childrenBtnInc: false })
-              }
-            }}
+            onClick={handleChildrenDec}
           >
             -
           </button>
@@ -108,20 +156,7 @@ function FilterPeople({ people, setPeople }) {
             disabled={isDisabled.childrenBtnInc}
             className={isDisabled.childrenBtnInc ? 'disabled' : ''}
             value="inc"
-            onClick={(e) => {
-              e.preventDefault()
-              setChildren((children) => children + 1)
-
-              setPeople({ ...people, children: children })
-
-              addSelector()
-
-              if (children >= 10) {
-                setDisabled({ ...isDisabled, childrenBtnInc: true })
-              } else {
-                setDisabled({ ...isDisabled, childrenBtnDec: false })
-              }
-            }}
+            onClick={handleChildrenInc}
           >
             +
           </button>
@@ -136,19 +171,7 @@ function FilterPeople({ people, setPeople }) {
             disabled={isDisabled.roomsBtnDec}
             className={isDisabled.roomsBtnDec ? 'disabled' : ''}
             value="dec"
-            onClick={(e) => {
-              e.preventDefault()
-              setRooms((rooms) => rooms - 1)
-
-              setPeople({ ...people, rooms: rooms })
-
-              if (rooms <= 1) {
-                setDisabled({ ...isDisabled, roomsBtnDec: true })
-              } else {
-                setDisabled({ ...isDisabled, roomsBtnDec: false })
-                setDisabled({ ...isDisabled, roomsBtnInc: false })
-              }
-            }}
+            onClick={handleRoomsDec}
           >
             -
           </button>
@@ -157,18 +180,7 @@ function FilterPeople({ people, setPeople }) {
             disabled={isDisabled.roomsBtnInc}
             className={isDisabled.roomsBtnInc ? 'disabled' : ''}
             value="inc"
-            onClick={(e) => {
-              e.preventDefault()
-              setRooms((rooms) => rooms + 1)
-
-              setPeople({ ...people, rooms: rooms })
-
-              if (rooms >= 30) {
-                setDisabled({ ...isDisabled, roomsBtnInc: true })
-              } else {
-                setDisabled({ ...isDisabled, roomsBtnDec: false })
-              }
-            }}
+            onClick={handleRoomsInc}
           >
             +
           </button>

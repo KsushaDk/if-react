@@ -9,14 +9,6 @@ function App() {
   const [defaultHotels, setHotels] = useState([])
   const [availableHotels, setAvailableHotels] = useState(null)
 
-  const [datesData, setDatesData] = useState({ startDate: null, endDate: null })
-
-  const [peopleData, setPeopleData] = useState({
-    adults: 1,
-    children: 0,
-    rooms: 1,
-  })
-
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -61,14 +53,7 @@ function App() {
   } else {
     return (
       <>
-        <TopSection
-          hotelData={hotelData}
-          setHotelData={setHotelData}
-          datesData={datesData}
-          setDatesData={setDatesData}
-          peopleData={peopleData}
-          setPeopleData={setPeopleData}
-        />
+        <TopSection hotelData={hotelData} setHotelData={setHotelData} />
 
         <div className="hotels">
           {!!availableHotels && (

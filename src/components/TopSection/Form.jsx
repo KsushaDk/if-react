@@ -6,25 +6,20 @@ import InputDate from './InputDate.jsx'
 import InputPeople from './InputPeople.jsx'
 import FilterPeople from './FilterPeople.jsx'
 
-function Form({
-  hotelData,
-  setHotelData,
-  datesData,
-  setDatesData,
-  peopleData,
-  setPeopleData,
-}) {
+function Form({ hotelData, setHotelData }) {
   const [destination, setDestination] = useState(hotelData)
-  const [dates, setDates] = useState(datesData)
-  const [people, setPeople] = useState(peopleData)
+  const [dates, setDates] = useState({ startDate: null, endDate: null })
+  const [people, setPeople] = useState({
+    adults: 1,
+    children: 0,
+    rooms: 1,
+  })
 
   const [filter, setFilter] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setHotelData(destination)
-    setDatesData(dates)
-    setPeopleData(people)
   }
 
   return (
@@ -59,10 +54,6 @@ function Form({
 Form.propTypes = {
   setHotelData: PropTypes.func,
   hotelData: PropTypes.string,
-  setDatesData: PropTypes.func,
-  datesData: PropTypes.object,
-  setPeopleData: PropTypes.func,
-  peopleData: PropTypes.object,
 }
 
 export default Form
