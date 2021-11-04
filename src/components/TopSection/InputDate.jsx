@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-function InputsDate() {
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
+function InputDate({ dates, setDates }) {
+  const [startDate, setStartDate] = useState(dates.startDate)
+  const [endDate, setEndDate] = useState(dates.endDate)
 
-  const onChange = (dates) => {
-    const [start, end] = dates
+  const handleDateChange = (currentDates) => {
+    const [start, end] = currentDates
     setStartDate(start)
     setEndDate(end)
   }
+
+  useEffect(() => {
+    setDates({ ...dates, startDate: startDate })
+  }, [startDate])
+
+  useEffect(() => {
+    setDates({ ...dates, endDate: endDate })
+  }, [endDate])
 
   return (
     <div className="form__div-date">
@@ -19,7 +29,7 @@ function InputsDate() {
         className="form__input"
         placeholderText="Check-in — Check-out"
         minDate={new Date()}
-        onChange={onChange}
+        onChange={handleDateChange}
         startDate={startDate}
         endDate={endDate}
         selectsRange
@@ -28,5 +38,9 @@ function InputsDate() {
     </div>
   )
 }
+InputDate.propTypes = {
+  setDates: PropTypes.func,
+  dates: PropTypes.object,
+}
 
-export default InputsDate
+export default InputDate
