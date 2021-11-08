@@ -1,0 +1,36 @@
+.footer {
+  padding: 120px 104px;
+  background: #10367c;
+}
+.footer__info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 64px;
+}
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.footer ul li {
+  margin-bottom: 24px;
+}
+.footer ul li span {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+}
+.footer ul li a {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+}
+.footer__text {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+}

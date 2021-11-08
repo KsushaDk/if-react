@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+//components
 import TopSection from './TopSection/TopSection.jsx'
 import HotelsItems from './Hotels/HotelsItems.jsx'
+import Footer from './Footer/Footer.jsx'
+
+//routes
+import AvailableHotels from './Hotels/AvailableHotels.jsx'
+import AvailableHotel from './Hotels/AvailableHotel.jsx'
 
 function App() {
   const [hotelData, setHotelData] = useState('')
@@ -52,16 +59,25 @@ function App() {
     return <div>Loading...</div>
   } else {
     return (
-      <>
+      <Router>
         <TopSection hotelData={hotelData} setHotelData={setHotelData} />
 
-        <div className="hotels">
-          {!!availableHotels && (
-            <HotelsItems hotels={availableHotels} title={'Available hotels'} />
-          )}
+        {!!availableHotels && (
+          <AvailableHotels
+            hotels={availableHotels}
+            title={'Available hotels'}
+          />
+        )}
+        {/* <Switch> */}
+        <Route exact path="/hotels/:id">
+          <AvailableHotel />
+        </Route>
+        {/* </Switch> */}
+        <Route exact path="/">
           <HotelsItems hotels={defaultHotels} title={'Homes guests loves'} />
-        </div>
-      </>
+        </Route>
+        <Footer />
+      </Router>
     )
   }
 }
