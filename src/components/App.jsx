@@ -60,23 +60,31 @@ function App() {
   } else {
     return (
       <Router>
-        <TopSection hotelData={hotelData} setHotelData={setHotelData} />
+        <>
+          <TopSection hotelData={hotelData} setHotelData={setHotelData} />
+          <Switch>
+            <Route exact path="/hotels">
+              {!!availableHotels && (
+                <AvailableHotels
+                  hotels={availableHotels}
+                  title={'Available hotels'}
+                />
+              )}
+            </Route>
 
-        {!!availableHotels && (
-          <AvailableHotels
-            hotels={availableHotels}
-            title={'Available hotels'}
-          />
-        )}
-        {/* <Switch> */}
-        <Route exact path="/hotels/:id">
-          <AvailableHotel />
-        </Route>
-        {/* </Switch> */}
-        <Route exact path="/">
-          <HotelsItems hotels={defaultHotels} title={'Homes guests loves'} />
-        </Route>
-        <Footer />
+            <Route exact path="/">
+              <HotelsItems
+                hotels={defaultHotels}
+                title={'Homes guests loves'}
+              />
+            </Route>
+
+            <Route exact path="/hotels/:id">
+              <AvailableHotel />
+            </Route>
+          </Switch>
+          <Footer />
+        </>
       </Router>
     )
   }
