@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 //components
 import TopSection from './TopSection/TopSection.jsx'
-import HotelsItems from './Hotels/HotelsItems.jsx'
 import Footer from './Footer/Footer.jsx'
 
 //routes
-import AvailableHotels from './Hotels/AvailableHotels.jsx'
-import AvailableHotel from './Hotels/AvailableHotel.jsx'
+import HotelRoutes from '../routes/HotelRoutes.jsx'
 
 function App() {
   const [hotelData, setHotelData] = useState('')
 
   const [defaultHotels, setHotels] = useState([])
-  const [availableHotels, setAvailableHotels] = useState(null)
+  const [availableHotels, setAvailableHotels] = useState([])
 
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -59,33 +56,14 @@ function App() {
     return <div>Loading...</div>
   } else {
     return (
-      <Router>
-        <>
-          <TopSection hotelData={hotelData} setHotelData={setHotelData} />
-          <Switch>
-            <Route exact path="/hotels">
-              {!!availableHotels && (
-                <AvailableHotels
-                  hotels={availableHotels}
-                  title={'Available hotels'}
-                />
-              )}
-            </Route>
-
-            <Route exact path="/">
-              <HotelsItems
-                hotels={defaultHotels}
-                title={'Homes guests loves'}
-              />
-            </Route>
-
-            <Route exact path="/hotels/:id">
-              <AvailableHotel />
-            </Route>
-          </Switch>
-          <Footer />
-        </>
-      </Router>
+      <>
+        <TopSection hotelData={hotelData} setHotelData={setHotelData} />
+        <HotelRoutes
+          defaultHotels={defaultHotels}
+          availableHotels={availableHotels}
+        />
+        <Footer />
+      </>
     )
   }
 }

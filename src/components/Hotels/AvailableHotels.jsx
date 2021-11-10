@@ -19,13 +19,7 @@ function AvailableHotels({ hotels, title }) {
                   src={item.imageUrl}
                   alt={item.name}
                 />
-              </Link>
-
-              <Link to={`/hotels/${item.id}`} className="available-hotel__link">
                 <p className="hotels__carrousel_p-name">{item.name}</p>
-              </Link>
-
-              <Link to={`/hotels/${item.id}`} className="available-hotel__link">
                 <p className="hotels__carrousel_p-place">
                   {item.city + ',' + ' ' + item.country}
                 </p>
