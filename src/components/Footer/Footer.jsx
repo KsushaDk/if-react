@@ -64,4 +64,6 @@ function Footer() {
   )
 }
 
+Footer.displayName = 'Footer'
+
 export default Footer

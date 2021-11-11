@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: outputPath,
     filename: 'app[hash].js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],

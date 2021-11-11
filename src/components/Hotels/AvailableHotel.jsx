@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import ReactLoading from 'react-loading'
 import { useParams, Link } from 'react-router-dom'
+import '../../index.css'
 
 function AvailableHotel() {
   const params = useParams()
@@ -31,9 +33,25 @@ function AvailableHotel() {
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return (
+      <ReactLoading
+        className="loading"
+        type={'bubbles'}
+        color={'#3077c6'}
+        height="10"
+        width="10"
+      />
+    )
   } else if (availableHotel === null) {
-    return <div>Loading...</div>
+    return (
+      <ReactLoading
+        className="loading"
+        type={'bubbles'}
+        color={'#3077c6'}
+        height="10"
+        width="10"
+      />
+    )
   } else {
     return (
       <div className="available-hotel__item">
@@ -62,5 +80,7 @@ function AvailableHotel() {
     )
   }
 }
+
+AvailableHotel.displayName = 'AvailableHotel'
 
 export default AvailableHotel

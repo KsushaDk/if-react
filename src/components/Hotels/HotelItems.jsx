@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import HotelItem from './HotelItem.jsx'
 import './Hotels.css'
 
-function HotelsItems({ title, hotels }) {
+function HotelItems({ title, hotels }) {
   return (
     <div className="hotels">
       <h2 className="hotels__title">{title}</h2>
@@ -17,9 +17,11 @@ function HotelsItems({ title, hotels }) {
   )
 }
 
-HotelsItems.propTypes = {
+HotelItems.propTypes = {
   title: PropTypes.string,
   hotels: PropTypes.arrayOf(PropTypes.object),
 }
 
-export default HotelsItems
+HotelItems.displayName = 'HotelItems'
+
+export default HotelItems

@@ -56,4 +56,6 @@ Form.propTypes = {
   hotelData: PropTypes.string,
 }
 
+Form.displayName = 'Form'
+
 export default Form
