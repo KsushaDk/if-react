@@ -6,6 +6,7 @@ import './TopSection.css'
 import Navigation from './Navigation.jsx'
 import Form from './Form.jsx'
 import Store from './Store.jsx'
+import { Link } from 'react-router-dom'
 
 function TopSection({ hotelData, setHotelData }) {
   return (
@@ -26,5 +27,7 @@ TopSection.propTypes = {
   setHotelData: PropTypes.func,
   hotelData: PropTypes.string,
 }
+
+// TopSection.displayName = 'TopSection'
 
 export default TopSection

@@ -6,7 +6,7 @@ import './Hotels.css'
 
 function HotelsItems({ title, hotels }) {
   return (
-    <div>
+    <div className="hotels">
       <h2 className="hotels__title">{title}</h2>
       <div className="hotels__carrousel">
         {hotels.slice(0, 4).map((item) => {

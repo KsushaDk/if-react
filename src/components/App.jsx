@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
+//components
 import TopSection from './TopSection/TopSection.jsx'
-import HotelsItems from './Hotels/HotelsItems.jsx'
+import Footer from './Footer/Footer.jsx'
+
+//routes
+import HotelRoutes from '../routes/HotelRoutes.jsx'
 
 function App() {
   const [hotelData, setHotelData] = useState('')
 
   const [defaultHotels, setHotels] = useState([])
-  const [availableHotels, setAvailableHotels] = useState(null)
+  const [availableHotels, setAvailableHotels] = useState([])
 
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -54,13 +58,11 @@ function App() {
     return (
       <>
         <TopSection hotelData={hotelData} setHotelData={setHotelData} />
-
-        <div className="hotels">
-          {!!availableHotels && (
-            <HotelsItems hotels={availableHotels} title={'Available hotels'} />
-          )}
-          <HotelsItems hotels={defaultHotels} title={'Homes guests loves'} />
-        </div>
+        <HotelRoutes
+          defaultHotels={defaultHotels}
+          availableHotels={availableHotels}
+        />
+        <Footer />
       </>
     )
   }

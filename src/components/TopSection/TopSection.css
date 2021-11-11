@@ -3,7 +3,6 @@
   padding: 51px 104px 120px 104px;
   background-image: url("../../../public/images/bg_header.svg");
   background-size: cover;
-  font-family: "Roboto" sans-serif;
   color: #ffffff;
 }
 .top-section__navigation {
@@ -160,7 +159,6 @@
   position: absolute;
   right: 20%;
   top: 100px;
-  font-family: "Roboto" sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

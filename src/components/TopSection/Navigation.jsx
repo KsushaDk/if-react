@@ -4,7 +4,7 @@ import React from 'react'
 
 function Navigation() {
   return (
-    <div className="top-section__navigation">
+    <nav className="top-section__navigation">
       <div className="navigation-logo" />
       <div className="navigation_group">
         <div className="navigation_div-text">Stays</div>
@@ -12,7 +12,7 @@ function Navigation() {
         <div className="navigation_div-picture-night" />
         <div className="navigation_div-picture-user" />
       </div>
-    </div>
+    </nav>
   )
 }
 
