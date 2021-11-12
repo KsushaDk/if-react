@@ -43,4 +43,6 @@ InputDate.propTypes = {
   dates: PropTypes.object,
 }
 
+InputDate.displayName = 'InputDate'
+
 export default InputDate

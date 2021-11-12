@@ -24,4 +24,7 @@ InputDestination.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
 }
+
+InputDestination.displayName = 'InputDestination'
+
 export default InputDestination

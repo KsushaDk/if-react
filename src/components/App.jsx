@@ -1,13 +1,34 @@
 import React, { useState, useEffect } from 'react'
+import ReactLoading from 'react-loading'
+import { Switch, Redirect } from 'react-router'
+import { defaultUserContext, UserContext } from '../contexts/user-context.jsx'
+import '../index.css'
 
-//components
-import TopSection from './TopSection/TopSection.jsx'
-import Footer from './Footer/Footer.jsx'
+//containers
+import PublicRoute from '../containers/PublicRoute.jsx'
+import PrivateRoute from '../containers/PrivateRoute.jsx'
 
 //routes
-import HotelRoutes from '../routes/HotelRoutes.jsx'
+// import HotelRoutes from '../routes/HotelRoutes.jsx'
+import SignIn from './TopSection/SignIn.jsx'
+import AvailableHotels from './Hotels/AvailableHotels.jsx'
+import AvailableHotel from './Hotels/AvailableHotel.jsx'
+import HotelItems from './Hotels/HotelItems.jsx'
 
 function App() {
+  const [state, setState] = useState({ ...defaultUserContext })
+
+  const signIn = (user) => {
+    setState({
+      user,
+      isAuthenticated: true,
+    })
+  }
+
+  const signOut = () => {
+    setState({ ...defaultUserContext })
+  }
+
   const [hotelData, setHotelData] = useState('')
 
   const [defaultHotels, setHotels] = useState([])
@@ -53,17 +74,50 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return (
+      <ReactLoading
+        className="loading"
+        type={'bubbles'}
+        color={'#3077c6'}
+        height="10"
+        width="10"
+      />
+    )
   } else {
     return (
-      <>
-        <TopSection hotelData={hotelData} setHotelData={setHotelData} />
-        <HotelRoutes
-          defaultHotels={defaultHotels}
-          availableHotels={availableHotels}
-        />
-        <Footer />
-      </>
+      <UserContext.Provider value={{ ...state, signIn, signOut }}>
+        <>
+          <Switch>
+            <PublicRoute exact path="/signin">
+              <SignIn />
+            </PublicRoute>
+
+            <PrivateRoute
+              exact
+              path="/"
+              hotelData={hotelData}
+              setHotelData={setHotelData}
+            >
+              {!!availableHotels.length && (
+                <AvailableHotels
+                  hotels={availableHotels}
+                  title={'Available hotels'}
+                />
+              )}
+
+              <HotelItems hotels={defaultHotels} title={'Homes guests loves'} />
+            </PrivateRoute>
+
+            <PrivateRoute exact path="/hotels/:id">
+              <AvailableHotel />
+            </PrivateRoute>
+
+            <PrivateRoute path="/hotels">
+              <Redirect strict from="hotels" to="/" />
+            </PrivateRoute>
+          </Switch>
+        </>
+      </UserContext.Provider>
     )
   }
 }

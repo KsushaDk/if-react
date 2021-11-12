@@ -41,4 +41,6 @@ Selectors.propTypes = {
   selectors: PropTypes.arrayOf(PropTypes.object),
 }
 
+Selectors.displayName = 'Selectors'
+
 export default Selectors

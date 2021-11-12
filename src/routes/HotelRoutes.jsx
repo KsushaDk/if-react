@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 
 //components
 import AvailableHotel from '../components/Hotels/AvailableHotel.jsx'
-import HotelsItems from '../components/Hotels/HotelsItems.jsx'
+import HotelItems from '../components/Hotels/HotelItems.jsx'
 import AvailableHotels from '../components/Hotels/AvailableHotels.jsx'
 
 function HotelRoutes({ defaultHotels, availableHotels }) {
@@ -18,7 +18,7 @@ function HotelRoutes({ defaultHotels, availableHotels }) {
           />
         )}
 
-        <HotelsItems hotels={defaultHotels} title={'Homes guests loves'} />
+        <HotelItems hotels={defaultHotels} title={'Homes guests loves'} />
       </Route>
 
       <Route exact path="/hotels/:id">

@@ -178,4 +178,7 @@ FilterPeople.propTypes = {
   setPeople: PropTypes.func,
   people: PropTypes.object,
 }
+
+FilterPeople.displayName = 'FilterPeople'
+
 export default FilterPeople

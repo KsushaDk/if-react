@@ -36,4 +36,7 @@ AvailableHotels.propTypes = {
   title: PropTypes.string,
   hotels: PropTypes.arrayOf(PropTypes.object),
 }
+
+AvailableHotels.displayName = 'AvailableHotels'
+
 export default AvailableHotels

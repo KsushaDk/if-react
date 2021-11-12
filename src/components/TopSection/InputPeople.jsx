@@ -28,4 +28,6 @@ InputPeople.propTypes = {
   onClick: PropTypes.func,
 }
 
+InputPeople.displayName = 'InputPeople'
+
 export default InputPeople
