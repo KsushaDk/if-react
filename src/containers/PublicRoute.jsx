@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
-import { array, element, node, oneOfType } from 'prop-types'
+import React from 'react'
+import { PropTypes } from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
-import { UserContext } from '../contexts/user-context.jsx'
 
-function PublicRoute({ children, ...props }) {
-  const { isAuthenticated } = useContext(UserContext)
+import { connect } from 'react-redux'
 
+function PublicRoute({ children, isAuthenticated, ...props }) {
   if (isAuthenticated) {
     return <Redirect to="/" />
   }
@@ -17,10 +16,21 @@ function PublicRoute({ children, ...props }) {
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated,
+  }
+}
+
 PublicRoute.propTypes = {
-  children: oneOfType([node, element, array]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.element,
+    PropTypes.array,
+  ]),
+  isAuthenticated: PropTypes.bool,
 }
 
 PublicRoute.displayName = 'PublicRoute'
 
-export default PublicRoute
+export default connect(mapStateToProps, null)(PublicRoute)

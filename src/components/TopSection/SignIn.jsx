@@ -1,24 +1,27 @@
-import React, { useContext, useState, useCallback } from 'react'
-import { UserContext } from '../../contexts/user-context.jsx'
+import React, { useState, useCallback } from 'react'
+import PropTypes from 'prop-types'
+
+import { connect } from 'react-redux'
+import { loginUser, addUser } from '../../redux/actions'
 
 //component
 import Navigation from './Navigation.jsx'
 
-function SignIn() {
+function SignIn({ dispatchAddUser, dispatchLogInUser }) {
   const [state, setState] = useState({ email: '', password: '' })
-  const { signIn } = useContext(UserContext)
 
-  const handleChange = useCallback(
-    (key) => (event) => {
-      event.preventDefault()
-      setState((prevState) => ({ ...prevState, [key]: event.target.value }))
-    },
-    [],
-  )
+  const handleChange = useCallback((event) => {
+    event.persist()
+    setState((prev) => ({
+      ...prev,
+      ...{ [event.target.name]: event.target.value },
+    }))
+  }, [])
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault()
-    signIn(state)
+    dispatchLogInUser(true)
+    // dispatchAddUser(state)
   }, [])
 
   return (
@@ -37,7 +40,7 @@ function SignIn() {
               id="email"
               name="email"
               value={state.email}
-              onChange={handleChange('email')}
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -50,7 +53,7 @@ function SignIn() {
               id="password"
               name="password"
               value={state.password}
-              onChange={handleChange('password')}
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -66,6 +69,16 @@ function SignIn() {
   )
 }
 
+const mapDispatchToProps = {
+  dispatchLogInUser: loginUser,
+  dispatchAddUser: addUser,
+}
+
+SignIn.propTypes = {
+  dispatchAddUser: PropTypes.func,
+  dispatchLogInUser: PropTypes.func,
+}
+
 SignIn.displayName = 'SignIn'
 
-export default SignIn
+export default connect(null, mapDispatchToProps)(SignIn)

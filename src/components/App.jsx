@@ -1,34 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import ReactLoading from 'react-loading'
-import { Switch, Redirect } from 'react-router'
-import { defaultUserContext, UserContext } from '../contexts/user-context.jsx'
+import { Switch } from 'react-router'
+
+import { Provider } from 'react-redux'
+import store from '../redux/store'
+
 import '../index.css'
 
 //containers
 import PublicRoute from '../containers/PublicRoute.jsx'
-import PrivateRoute from '../containers/PrivateRoute.jsx'
 
 //routes
-// import HotelRoutes from '../routes/HotelRoutes.jsx'
+import HotelRoutes from '../routes/HotelRoutes.jsx'
 import SignIn from './TopSection/SignIn.jsx'
-import AvailableHotels from './Hotels/AvailableHotels.jsx'
-import AvailableHotel from './Hotels/AvailableHotel.jsx'
-import HotelItems from './Hotels/HotelItems.jsx'
 
 function App() {
-  const [state, setState] = useState({ ...defaultUserContext })
-
-  const signIn = (user) => {
-    setState({
-      user,
-      isAuthenticated: true,
-    })
-  }
-
-  const signOut = () => {
-    setState({ ...defaultUserContext })
-  }
-
   const [hotelData, setHotelData] = useState('')
 
   const [defaultHotels, setHotels] = useState([])
@@ -85,39 +71,20 @@ function App() {
     )
   } else {
     return (
-      <UserContext.Provider value={{ ...state, signIn, signOut }}>
-        <>
-          <Switch>
-            <PublicRoute exact path="/signin">
-              <SignIn />
-            </PublicRoute>
+      <>
+        <Switch>
+          <PublicRoute exact path="/signin">
+            <SignIn />
+          </PublicRoute>
 
-            <PrivateRoute
-              exact
-              path="/"
-              hotelData={hotelData}
-              setHotelData={setHotelData}
-            >
-              {!!availableHotels.length && (
-                <AvailableHotels
-                  hotels={availableHotels}
-                  title={'Available hotels'}
-                />
-              )}
-
-              <HotelItems hotels={defaultHotels} title={'Homes guests loves'} />
-            </PrivateRoute>
-
-            <PrivateRoute exact path="/hotels/:id">
-              <AvailableHotel />
-            </PrivateRoute>
-
-            <PrivateRoute path="/hotels">
-              <Redirect strict from="hotels" to="/" />
-            </PrivateRoute>
-          </Switch>
-        </>
-      </UserContext.Provider>
+          <HotelRoutes
+            hotelData={hotelData}
+            setHotelData={setHotelData}
+            availableHotels={availableHotels}
+            defaultHotels={defaultHotels}
+          />
+        </Switch>
+      </>
     )
   }
 }

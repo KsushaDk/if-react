@@ -1,15 +1,16 @@
-import React, { useState, useContext, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../../contexts/user-context.jsx'
 
-function Navigation() {
-  const { signOut } = useContext(UserContext)
+import { connect } from 'react-redux'
+import { logoutUser } from '../../redux/actions'
 
+function Navigation({ dispatchLogOutUser }) {
   const [showSignOut, setSignOut] = useState(false)
 
   const handleClick = useCallback((event) => {
     event.preventDefault()
-    signOut()
+    dispatchLogOutUser(false)
     setSignOut((showSignOut) => !showSignOut)
   }, [])
 
@@ -46,6 +47,14 @@ function Navigation() {
   )
 }
 
+const mapDispatchToProps = {
+  dispatchLogOutUser: logoutUser,
+}
+
+Navigation.propTypes = {
+  dispatchLogOutUser: PropTypes.func,
+}
+
 Navigation.displayName = 'Navigation'
 
-export default Navigation
+export default connect(null, mapDispatchToProps)(Navigation)
