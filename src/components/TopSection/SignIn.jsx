@@ -18,12 +18,14 @@ function SignIn() {
     }))
   }, [])
 
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault()
-    dispatch(loginUser(true))
-    dispatch(addUser(state))
-    //вот тут проблема, информация просто не идет дальше
-  }, [])
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault()
+      dispatch(loginUser(true))
+      dispatch(addUser(state))
+    },
+    [state, dispatch],
+  )
 
   return (
     <div className="wrapper__sign-in">
