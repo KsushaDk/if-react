@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './Hotels.css'
 
-function AvailableHotels({ hotels, title }) {
+function AvailableHotels({ title, hotels }) {
   return (
     <div className="hotels">
       <h2 className="hotels__title">{title}</h2>

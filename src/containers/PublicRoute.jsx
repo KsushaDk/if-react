@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
-import { array, element, node, oneOfType } from 'prop-types'
+import React from 'react'
+import { PropTypes } from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
-import { UserContext } from '../contexts/user-context.jsx'
+
+import { useSelector } from 'react-redux'
 
 function PublicRoute({ children, ...props }) {
-  const { isAuthenticated } = useContext(UserContext)
+  const isAuthenticated = useSelector((state) => state.isAuthenticated)
 
   if (isAuthenticated) {
     return <Redirect to="/" />
@@ -18,7 +19,11 @@ function PublicRoute({ children, ...props }) {
 }
 
 PublicRoute.propTypes = {
-  children: oneOfType([node, element, array]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.element,
+    PropTypes.array,
+  ]),
 }
 
 PublicRoute.displayName = 'PublicRoute'

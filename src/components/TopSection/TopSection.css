@@ -251,6 +251,7 @@
 
 .wrapper__sign-in {
   margin: 0px auto;
+  height: 100vh;
   padding: 51px 104px 120px 104px;
   background-image: url("../../../public/images/bg_header.svg");
   background-size: cover;

@@ -1,25 +1,31 @@
-import React, { useContext, useState, useCallback } from 'react'
-import { UserContext } from '../../contexts/user-context.jsx'
+import React, { useState, useCallback } from 'react'
+
+import { useDispatch } from 'react-redux'
+import { loginUser, addUser } from '../../redux/actions'
 
 //component
 import Navigation from './Navigation.jsx'
 
 function SignIn() {
   const [state, setState] = useState({ email: '', password: '' })
-  const { signIn } = useContext(UserContext)
+  const dispatch = useDispatch()
 
-  const handleChange = useCallback(
-    (key) => (event) => {
-      event.preventDefault()
-      setState((prevState) => ({ ...prevState, [key]: event.target.value }))
-    },
-    [],
-  )
-
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault()
-    signIn(state)
+  const handleChange = useCallback((event) => {
+    event.persist()
+    setState((prev) => ({
+      ...prev,
+      ...{ [event.target.name]: event.target.value },
+    }))
   }, [])
+
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault()
+      dispatch(loginUser(true))
+      dispatch(addUser(state))
+    },
+    [state, dispatch],
+  )
 
   return (
     <div className="wrapper__sign-in">
@@ -37,7 +43,7 @@ function SignIn() {
               id="email"
               name="email"
               value={state.email}
-              onChange={handleChange('email')}
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -50,7 +56,7 @@ function SignIn() {
               id="password"
               name="password"
               value={state.password}
-              onChange={handleChange('password')}
+              onChange={handleChange}
             />
           </div>
           <div>

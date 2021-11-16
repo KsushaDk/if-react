@@ -1,15 +1,15 @@
-import React, { useContext } from 'react'
-import { PropTypes, array, element, node, oneOfType } from 'prop-types'
+import React from 'react'
+import { PropTypes } from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
-import { UserContext } from '../contexts/user-context.jsx'
+
+import { useSelector } from 'react-redux'
 
 //components
 import TopSection from '../components/TopSection/TopSection.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 
 function PrivateRoute({ children, ...props }) {
-  const { isAuthenticated } = useContext(UserContext)
-
+  const isAuthenticated = useSelector((state) => state.isAuthenticated)
   if (!isAuthenticated) {
     return <Redirect to="/signin" />
   }
@@ -29,7 +29,11 @@ function PrivateRoute({ children, ...props }) {
 }
 
 PrivateRoute.propTypes = {
-  children: oneOfType([node, element, array]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.element,
+    PropTypes.array,
+  ]),
   setHotelData: PropTypes.func,
   hotelData: PropTypes.string,
 }

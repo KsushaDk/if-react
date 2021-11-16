@@ -1,15 +1,16 @@
-import React, { useState, useContext, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../../contexts/user-context.jsx'
+
+import { useDispatch } from 'react-redux'
+import { logoutUser } from '../../redux/actions'
 
 function Navigation() {
-  const { signOut } = useContext(UserContext)
-
   const [showSignOut, setSignOut] = useState(false)
+  const dispatch = useDispatch()
 
   const handleClick = useCallback((event) => {
     event.preventDefault()
-    signOut()
+    dispatch(logoutUser(false))
     setSignOut((showSignOut) => !showSignOut)
   }, [])
 
