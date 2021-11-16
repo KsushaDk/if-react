@@ -6,18 +6,18 @@ export function userReducer(state = initialUserState, action) {
   switch (action.type) {
     case userActionTypes.loginUser:
       return {
-        ...state.user,
+        ...state,
         isAuthenticated: true,
       }
     case userActionTypes.addUser:
       return {
-        ...state.user,
+        ...state,
         email: action.email,
         password: action.password,
       }
     case userActionTypes.logoutUser:
       return {
-        ...state.user,
+        ...state,
         isAuthenticated: false,
       }
     default:

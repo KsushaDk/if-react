@@ -1,14 +1,14 @@
 import React, { useState, useCallback } from 'react'
-import PropTypes from 'prop-types'
 
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { loginUser, addUser } from '../../redux/actions'
 
 //component
 import Navigation from './Navigation.jsx'
 
-function SignIn({ dispatchAddUser, dispatchLogInUser }) {
+function SignIn() {
   const [state, setState] = useState({ email: '', password: '' })
+  const dispatch = useDispatch()
 
   const handleChange = useCallback((event) => {
     event.persist()
@@ -20,8 +20,9 @@ function SignIn({ dispatchAddUser, dispatchLogInUser }) {
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault()
-    dispatchLogInUser(true)
-    // dispatchAddUser(state)
+    dispatch(loginUser(true))
+    dispatch(addUser(state))
+    //вот тут проблема, информация просто не идет дальше
   }, [])
 
   return (
@@ -69,16 +70,6 @@ function SignIn({ dispatchAddUser, dispatchLogInUser }) {
   )
 }
 
-const mapDispatchToProps = {
-  dispatchLogInUser: loginUser,
-  dispatchAddUser: addUser,
-}
-
-SignIn.propTypes = {
-  dispatchAddUser: PropTypes.func,
-  dispatchLogInUser: PropTypes.func,
-}
-
 SignIn.displayName = 'SignIn'
 
-export default connect(null, mapDispatchToProps)(SignIn)
+export default SignIn

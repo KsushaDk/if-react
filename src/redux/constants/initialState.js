@@ -1,7 +1,5 @@
 export const initialUserState = {
-  user: {
-    isAuthenticated: false,
-    email: '',
-    password: '',
-  },
+  isAuthenticated: false,
+  email: '',
+  password: '',
 }
