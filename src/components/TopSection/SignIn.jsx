@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loginUser, addUser } from '../../redux/actions'
 
 //component
@@ -8,6 +8,10 @@ import Navigation from './Navigation.jsx'
 
 function SignIn() {
   const [state, setState] = useState({ email: '', password: '' })
+  const user = useSelector((state) => {
+    return state
+  })
+  const [warning, setWarning] = useState(false)
   const dispatch = useDispatch()
 
   const handleChange = useCallback((event) => {
@@ -21,10 +25,20 @@ function SignIn() {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault()
-      dispatch(loginUser(true))
-      dispatch(addUser(state))
+      if (user.email === state.email) {
+        if (user.password === state.password) {
+          dispatch(addUser(state))
+          dispatch(loginUser(true))
+        } else {
+          setWarning(true)
+          setState({ ...state, password: '' })
+        }
+      } else {
+        dispatch(addUser(state))
+        dispatch(loginUser(true))
+      }
     },
-    [state, dispatch],
+    [state, dispatch, user],
   )
 
   return (
@@ -66,6 +80,11 @@ function SignIn() {
               value="Sign in"
             />
           </div>
+          {warning && (
+            <div className="form-sign-in__warning">
+              Password is incorrect. Please try again.
+            </div>
+          )}
         </form>
       </div>
     </div>

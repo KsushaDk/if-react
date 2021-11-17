@@ -8,11 +8,14 @@ function Navigation() {
   const [showSignOut, setSignOut] = useState(false)
   const dispatch = useDispatch()
 
-  const handleClick = useCallback((event) => {
-    event.preventDefault()
-    dispatch(logoutUser(false))
-    setSignOut((showSignOut) => !showSignOut)
-  }, [])
+  const handleClick = useCallback(
+    (event) => {
+      event.preventDefault()
+      dispatch(logoutUser(false))
+      setSignOut((showSignOut) => !showSignOut)
+    },
+    [dispatch],
+  )
 
   return (
     <nav className="top-section__navigation">

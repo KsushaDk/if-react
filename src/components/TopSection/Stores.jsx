@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Store() {
+function Stores() {
   return (
     <div className="top-section__apps">
       <div className="top-section__apps-google"></div>
@@ -9,6 +9,6 @@ function Store() {
   )
 }
 
-Store.displayName = 'Store'
+Stores.displayName = 'Stores'
 
-export default Store
+export default Stores
