@@ -6,7 +6,7 @@ import './TopSection.css'
 //components
 import Navigation from './Navigation.jsx'
 import Form from './Form.jsx'
-import Store from './Store.jsx'
+import Stores from './Stores.jsx'
 
 function TopSection({ hotelData, setHotelData }) {
   return (
@@ -18,7 +18,7 @@ function TopSection({ hotelData, setHotelData }) {
         to live, work or just relax
       </h2>
       <Form hotelData={hotelData} setHotelData={setHotelData} />
-      <Store />
+      <Stores />
     </div>
   )
 }

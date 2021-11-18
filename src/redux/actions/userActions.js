@@ -1,17 +1,7 @@
-import { userActionTypes } from '../constants/actionConstants'
+import { createActions } from 'redux-actions'
 
-export const loginUser = ({ isAuthenticated = !!'' }) => ({
-  type: userActionTypes.loginUser,
-  isAuthenticated,
-})
-
-export const logoutUser = ({ isAuthenticated = !!'' }) => ({
-  type: userActionTypes.logoutUser,
-  isAuthenticated,
-})
-
-export const addUser = ({ email = '', password = '' }) => ({
-  type: userActionTypes.addUser,
-  email,
-  password,
-})
+export const { loginUser, logoutUser, addUser } = createActions(
+  'LOGIN_USER',
+  'LOGOUT_USER',
+  'ADD_USER',
+)

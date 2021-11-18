@@ -1,26 +1,26 @@
-import { userActionTypes } from '../constants/actionConstants'
+import { handleActions, combineActions } from 'redux-actions'
 
+//actions
+import { loginUser, logoutUser, addUser } from '../actions'
+
+//constants
 import { initialUserState } from '../constants/initialState'
 
-export function userReducer(state = initialUserState, action) {
-  switch (action.type) {
-    case userActionTypes.loginUser:
+export const userReducer = handleActions(
+  {
+    [combineActions(loginUser, logoutUser)]: (state, { payload }) => {
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthenticated: payload,
       }
-    case userActionTypes.addUser:
+    },
+    [addUser]: (state, { payload }) => {
       return {
         ...state,
-        email: action.email,
-        password: action.password,
+        email: payload.email,
+        password: payload.password,
       }
-    case userActionTypes.logoutUser:
-      return {
-        ...state,
-        isAuthenticated: false,
-      }
-    default:
-      return state
-  }
-}
+    },
+  },
+  initialUserState,
+)

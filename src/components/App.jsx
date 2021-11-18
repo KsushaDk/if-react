@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react'
 import ReactLoading from 'react-loading'
 import { Switch } from 'react-router'
 
-import { Provider } from 'react-redux'
-import store from '../redux/store'
-
 import '../index.css'
 
 //containers
