@@ -10,7 +10,7 @@ export const initialHotelState = {
 }
 
 export const initialFormState = {
-  destination: '',
+  search: '',
   dateFrom: null,
   dateTo: null,
   adults: 1,

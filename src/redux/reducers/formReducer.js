@@ -16,10 +16,10 @@ import { initialFormState } from '../constants/initialState'
 
 export const formReducer = handleActions(
   {
-    [setDestinationInfo]: (state, { payload: destination }) => {
+    [setDestinationInfo]: (state, { payload: search }) => {
       return {
         ...state,
-        destination,
+        search,
       }
     },
     [setDateFromInfo]: (state, { payload: dateFrom }) => {

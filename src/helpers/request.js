@@ -1,6 +1,5 @@
 const urlWithParams = (urlStr, queryParamsObj) => {
   const url = new URL(urlStr)
-  url.searchParams.set('search', `${queryParamsObj.destination}`)
 
   Object.entries(queryParamsObj).forEach(([key, value]) => {
     return url.searchParams.set(`${key}`, `${value}`)
@@ -9,8 +8,8 @@ const urlWithParams = (urlStr, queryParamsObj) => {
   return url
 }
 
-export const httpGet = (url, queryParams = '', options) => {
-  return fetch(urlWithParams(url, queryParams), options)
+export const httpGet = (url, queryParams = '') => {
+  return fetch(urlWithParams(url, queryParams))
     .then((response) => response.json())
     .then((data) => data)
     .catch((err) => console.log(err))
