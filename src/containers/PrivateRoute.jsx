@@ -9,17 +9,15 @@ import TopSection from '../components/TopSection/TopSection.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 
 function PrivateRoute({ children, ...props }) {
-  const isAuthenticated = useSelector((state) => state.isAuthenticated)
+  const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
+
   if (!isAuthenticated) {
     return <Redirect to="/signin" />
   }
 
   return (
     <>
-      <TopSection
-        hotelData={props.hotelData}
-        setHotelData={props.setHotelData}
-      />
+      <TopSection />
       <Route {...props}>
         <>{children}</>
       </Route>
@@ -34,8 +32,6 @@ PrivateRoute.propTypes = {
     PropTypes.element,
     PropTypes.array,
   ]),
-  setHotelData: PropTypes.func,
-  hotelData: PropTypes.string,
 }
 
 PrivateRoute.displayName = 'PrivateRoute'

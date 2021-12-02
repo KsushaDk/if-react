@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import ReactLoading from 'react-loading'
+import React, { useEffect } from 'react'
 import { Switch } from 'react-router'
+import { useDispatch } from 'react-redux'
 
+//actions
+import { getPopularHotels } from '../redux/actions'
+
+//styles
 import '../index.css'
 
 //containers
@@ -12,78 +16,23 @@ import HotelRoutes from '../routes/HotelRoutes.jsx'
 import SignIn from './TopSection/SignIn.jsx'
 
 function App() {
-  const [hotelData, setHotelData] = useState('')
-
-  const [defaultHotels, setHotels] = useState([])
-  const [availableHotels, setAvailableHotels] = useState([])
-
-  const [error, setError] = useState(null)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true)
-          setHotels(result)
-        },
-        (error) => {
-          setIsLoaded(true)
-          setError(error)
-        },
-      )
-  }, [])
+    dispatch(getPopularHotels())
+  }, [dispatch])
 
-  useEffect(() => {
-    if (hotelData) {
-      const url = new URL('https://fe-student-api.herokuapp.com/api/hotels')
-      url.searchParams.set('search', `${hotelData}`)
-      fetch(`${url}`)
-        .then((response) => response.json())
-        .then(
-          (result) => {
-            setIsLoaded(true)
-            setAvailableHotels(result)
-          },
-          (error) => {
-            setIsLoaded(true)
-            setError(error)
-          },
-        )
-    }
-  }, [hotelData])
+  return (
+    <>
+      <Switch>
+        <PublicRoute exact path="/signin">
+          <SignIn />
+        </PublicRoute>
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  } else if (!isLoaded) {
-    return (
-      <ReactLoading
-        className="loading"
-        type={'bubbles'}
-        color={'#3077c6'}
-        height="10"
-        width="10"
-      />
-    )
-  } else {
-    return (
-      <>
-        <Switch>
-          <PublicRoute exact path="/signin">
-            <SignIn />
-          </PublicRoute>
-
-          <HotelRoutes
-            hotelData={hotelData}
-            setHotelData={setHotelData}
-            availableHotels={availableHotels}
-            defaultHotels={defaultHotels}
-          />
-        </Switch>
-      </>
-    )
-  }
+        <HotelRoutes />
+      </Switch>
+    </>
+  )
 }
 
 export default App

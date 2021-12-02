@@ -1,44 +1,56 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
+import { setChildrenAge } from '../../redux/actions'
 
 function Selectors({ selectors }) {
-  return (
-    <div className="form__filter-div selector">
-      <span>
-        What is the age of the child you’re
-        <br />
-        travelling with?
-      </span>
-      {selectors.map((item) => {
-        return (
-          <select key={item.id}>
-            <option value="0">0 years old</option>
-            <option value="1">1 years old</option>
-            <option value="2">2 years old</option>
-            <option value="3">3 years old</option>
-            <option value="4">4 years old</option>
-            <option value="5">5 years old</option>
-            <option value="6">6 years old</option>
-            <option value="7">7 years old</option>
-            <option value="8">8 years old</option>
-            <option value="9">9 years old</option>
-            <option value="10">10 years old</option>
-            <option value="11">11 years old</option>
-            <option value="12">12 years old</option>
-            <option value="13">13 years old</option>
-            <option value="14">14 years old</option>
-            <option value="15">15 years old</option>
-            <option value="16">16 years old</option>
-            <option value="17">17 years old</option>
-          </select>
-        )
-      })}
-    </div>
-  )
+  const dispatch = useDispatch()
+  const [age, setAge] = useState([])
+
+  const handleChange = useCallback((event) => {
+    event.preventDefault()
+    setAge((age) => [...age, ...[event.target.value]])
+  }, [])
+
+  useEffect(() => {
+    dispatch(setChildrenAge(age))
+  }, [dispatch, age])
+
+  const ages = []
+
+  for (let i = 0; i <= 17; i += 1) {
+    ages.push(i)
+  }
+
+  const options = []
+
+  for (let i = 0; i < selectors; i += 1) {
+    options.push(
+      <select key={i} onChange={handleChange}>
+        {ages.map((option) => (
+          <option key={option} value={option}>{`${option} years old`}</option>
+        ))}
+      </select>,
+    )
+  }
+
+  if (selectors > 0) {
+    return (
+      <div className="form__filter-div selector">
+        <label>
+          What is the age of the child you’re
+          <br />
+          travelling with?
+        </label>
+        <>{options}</>
+      </div>
+    )
+  }
+  return null
 }
 
 Selectors.propTypes = {
-  selectors: PropTypes.arrayOf(PropTypes.object),
+  selectors: PropTypes.number,
 }
 
 Selectors.displayName = 'Selectors'

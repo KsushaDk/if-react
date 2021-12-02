@@ -8,10 +8,13 @@ import { initialUserState } from '../constants/initialState'
 
 export const userReducer = handleActions(
   {
-    [combineActions(loginUser, logoutUser)]: (state, { payload }) => {
+    [combineActions(loginUser, logoutUser)]: (
+      state,
+      { payload: isAuthenticated },
+    ) => {
       return {
         ...state,
-        isAuthenticated: payload,
+        isAuthenticated,
       }
     },
     [addUser]: (state, { payload }) => {

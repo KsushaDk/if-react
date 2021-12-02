@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Switch, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 //containers
 import PrivateRoute from '../containers/PrivateRoute.jsx'
@@ -10,20 +10,12 @@ import AvailableHotel from '../components/Hotels/AvailableHotel.jsx'
 import HotelItems from '../components/Hotels/HotelItems.jsx'
 import AvailableHotels from '../components/Hotels/AvailableHotels.jsx'
 
-function HotelRoutes({
-  defaultHotels,
-  availableHotels,
-  hotelData,
-  setHotelData,
-}) {
+function HotelRoutes() {
+  const availableHotels = useSelector(({ hotels }) => hotels.available || [])
+
   return (
     <Switch>
-      <PrivateRoute
-        exact
-        path="/"
-        hotelData={hotelData}
-        setHotelData={setHotelData}
-      >
+      <PrivateRoute exact path="/">
         {!!availableHotels.length && (
           <AvailableHotels
             hotels={availableHotels}
@@ -31,7 +23,7 @@ function HotelRoutes({
           />
         )}
 
-        <HotelItems hotels={defaultHotels} title={'Homes guests loves'} />
+        <HotelItems title={'Homes guests loves'} />
       </PrivateRoute>
 
       <PrivateRoute exact path="/hotels/:id">
@@ -43,13 +35,6 @@ function HotelRoutes({
       </PrivateRoute>
     </Switch>
   )
-}
-
-HotelRoutes.propTypes = {
-  defaultHotels: PropTypes.arrayOf(PropTypes.object),
-  availableHotels: PropTypes.arrayOf(PropTypes.object),
-  setHotelData: PropTypes.func,
-  hotelData: PropTypes.string,
 }
 
 export default HotelRoutes

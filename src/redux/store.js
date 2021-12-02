@@ -1,20 +1,27 @@
-import { createStore } from 'redux'
-import { devToolsEnhancer } from 'redux-devtools-extension'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { createStore, applyMiddleware } from 'redux'
+import { persistStore } from 'redux-persist'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { userReducer } from './reducers/userReducer'
+//sagas
+import hotelSaga from './sagas/hotelSaga'
 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
+//reducers
+import rootReducer from './reducers'
 
-const persistedReducer = persistReducer(persistConfig, userReducer)
+import middleWare, { sagaMiddleware } from './middleware'
+
+const composeEnhancers = composeWithDevTools({})
 
 const configureStore = () => {
-  const store = createStore(persistedReducer, devToolsEnhancer())
+  const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(...middleWare)),
+  )
+
+  sagaMiddleware.run(hotelSaga)
+
   const persistor = persistStore(store)
+
   return { store, persistor }
 }
 

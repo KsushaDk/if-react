@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import './TopSection.css'
 
@@ -8,7 +7,7 @@ import Navigation from './Navigation.jsx'
 import Form from './Form.jsx'
 import Stores from './Stores.jsx'
 
-function TopSection({ hotelData, setHotelData }) {
+function TopSection() {
   return (
     <div className="top-section">
       <Navigation />
@@ -17,15 +16,10 @@ function TopSection({ hotelData, setHotelData }) {
         <br />
         to live, work or just relax
       </h2>
-      <Form hotelData={hotelData} setHotelData={setHotelData} />
+      <Form />
       <Stores />
     </div>
   )
-}
-
-TopSection.propTypes = {
-  setHotelData: PropTypes.func,
-  hotelData: PropTypes.string,
 }
 
 TopSection.displayName = 'TopSection'

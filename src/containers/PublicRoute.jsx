@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function PublicRoute({ children, ...props }) {
-  const isAuthenticated = useSelector((state) => state.isAuthenticated)
+  const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
 
   if (isAuthenticated) {
     return <Redirect to="/" />
