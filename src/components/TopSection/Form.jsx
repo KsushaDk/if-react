@@ -1,41 +1,37 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useCallback, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
+//actions
+import { getAvailableHotels } from '../../redux/actions/hotelActions'
+
+//components
 import InputDestination from './InputDestination.jsx'
 import InputDate from './InputDate.jsx'
 import InputPeople from './InputPeople.jsx'
 import FilterPeople from './FilterPeople.jsx'
 
-function Form({ hotelData, setHotelData }) {
-  const [destination, setDestination] = useState(hotelData)
-  const [dates, setDates] = useState({ startDate: null, endDate: null })
-  const [people, setPeople] = useState({
-    adults: 1,
-    children: 0,
-    rooms: 1,
-  })
-
+function Form() {
   const [filter, setFilter] = useState(false)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setHotelData(destination)
-  }
+  const dispatch = useDispatch()
+
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault()
+      dispatch(getAvailableHotels())
+    },
+    [dispatch],
+  )
 
   return (
     <>
       <form className="top-section__form" onSubmit={handleSubmit}>
-        <InputDestination
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-        />
-        <InputDate dates={dates} setDates={setDates} />
+        <InputDestination />
+        <InputDate />
         <InputPeople
-          value={people}
           onClick={() => {
             setFilter((filter) => !filter)
           }}
-          onChange={(e) => setPeople(e.target.value)}
         />
         <div className="form__div-btn">
           <input
@@ -45,15 +41,10 @@ function Form({ hotelData, setHotelData }) {
           />
         </div>
 
-        {filter && <FilterPeople people={people} setPeople={setPeople} />}
+        {filter && <FilterPeople />}
       </form>
     </>
   )
-}
-
-Form.propTypes = {
-  setHotelData: PropTypes.func,
-  hotelData: PropTypes.string,
 }
 
 Form.displayName = 'Form'

@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-function InputDate({ dates, setDates }) {
-  const [startDate, setStartDate] = useState(dates.startDate)
-  const [endDate, setEndDate] = useState(dates.endDate)
+//actions
+import { setDateFromInfo, setDateToInfo } from '../../redux/actions/formActions'
 
-  const handleDateChange = (currentDates) => {
+function InputDate() {
+  const dispatch = useDispatch()
+  const dates = useSelector(({ form }) => form)
+
+  const [dateFrom, setDateFrom] = useState(dates.dateFrom)
+  const [dateTo, setDateTo] = useState(dates.dateTo)
+
+  const handleDateChange = useCallback((currentDates) => {
     const [start, end] = currentDates
-    setStartDate(start)
-    setEndDate(end)
-  }
+    setDateFrom(start)
+    setDateTo(end)
+  }, [])
 
   useEffect(() => {
-    setDates({ ...dates, startDate: startDate })
-  }, [startDate])
+    dispatch(setDateFromInfo(Date.parse(dateFrom)))
+  }, [dispatch, dateFrom])
 
   useEffect(() => {
-    setDates({ ...dates, endDate: endDate })
-  }, [endDate])
+    dispatch(setDateToInfo(Date.parse(dateTo)))
+  }, [dispatch, dateTo])
 
   return (
     <div className="form__div-date">
@@ -30,17 +36,13 @@ function InputDate({ dates, setDates }) {
         placeholderText="Check-in — Check-out"
         minDate={new Date()}
         onChange={handleDateChange}
-        startDate={startDate}
-        endDate={endDate}
+        startDate={dateFrom}
+        endDate={dateTo}
         selectsRange
         monthsShown={2}
       />
     </div>
   )
-}
-InputDate.propTypes = {
-  setDates: PropTypes.func,
-  dates: PropTypes.object,
 }
 
 InputDate.displayName = 'InputDate'

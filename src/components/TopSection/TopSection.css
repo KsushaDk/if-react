@@ -235,7 +235,7 @@
 .form__filter-people-focus .selector {
   flex-direction: column;
 }
-.form__filter-people-focus .selector span {
+.form__filter-people-focus .selector label {
   padding-top: 16px;
   font-size: 12px;
   line-height: 14px;

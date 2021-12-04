@@ -1,7 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-function InputDestination({ value, onChange }) {
+//actions
+import { setDestinationInfo } from '../../redux/actions/formActions'
+
+function InputDestination() {
+  const dispatch = useDispatch()
+
+  const handleChange = useCallback(
+    (event) => {
+      event.preventDefault()
+      dispatch(setDestinationInfo(event.target.value))
+    },
+    [dispatch],
+  )
+
   return (
     <div className="form__div-destination">
       <label htmlFor="search" className="form__label">
@@ -13,16 +26,10 @@ function InputDestination({ value, onChange }) {
         type="text"
         name="search"
         placeholder="New York"
-        value={value}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </div>
   )
-}
-
-InputDestination.propTypes = {
-  onChange: PropTypes.func,
-  value: PropTypes.string,
 }
 
 InputDestination.displayName = 'InputDestination'

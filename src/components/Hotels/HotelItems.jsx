@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 
 import HotelItem from './HotelItem.jsx'
 import './Hotels.css'
 
-function HotelItems({ title, hotels }) {
+function HotelItems({ title }) {
+  const hotels = useSelector(({ hotels }) => hotels.popular || [])
+
   return (
     <div className="hotels">
       <h2 className="hotels__title">{title}</h2>
@@ -19,7 +22,6 @@ function HotelItems({ title, hotels }) {
 
 HotelItems.propTypes = {
   title: PropTypes.string,
-  hotels: PropTypes.arrayOf(PropTypes.object),
 }
 
 HotelItems.displayName = 'HotelItems'

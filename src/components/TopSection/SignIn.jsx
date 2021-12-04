@@ -8,9 +8,10 @@ import Navigation from './Navigation.jsx'
 
 function SignIn() {
   const [state, setState] = useState({ email: '', password: '' })
-  const user = useSelector((state) => {
-    return state
+  const user = useSelector(({ user }) => {
+    return user
   })
+
   const [warning, setWarning] = useState(false)
   const dispatch = useDispatch()
 
