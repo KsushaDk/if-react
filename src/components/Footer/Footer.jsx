@@ -1,10 +1,12 @@
 import React from 'react'
-import './Footer.css'
+import useStyles from './Footer.styles'
 
 function Footer() {
+  const classes = useStyles()
+
   return (
-    <div className="footer">
-      <div className="footer__info">
+    <div className={classes.footer}>
+      <div>
         <ul>
           <li>
             <span>About</span>
@@ -57,7 +59,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-      <p className="footer__text">
+      <p className={classes.footer__text}>
         &#xA9; 2020 Triphouse, Inc. All rights reserved
       </p>
     </div>

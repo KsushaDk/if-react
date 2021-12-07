@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import useStyles from './TopSection.styles'
 
 //actions
 import { getAvailableHotels } from '../../redux/actions/hotelActions'
@@ -11,6 +12,8 @@ import InputPeople from './InputPeople.jsx'
 import FilterPeople from './FilterPeople.jsx'
 
 function Form() {
+  const classes = useStyles()
+
   const [filter, setFilter] = useState(false)
 
   const dispatch = useDispatch()
@@ -25,7 +28,7 @@ function Form() {
 
   return (
     <>
-      <form className="top-section__form" onSubmit={handleSubmit}>
+      <form className={classes.top_section__form} onSubmit={handleSubmit}>
         <InputDestination />
         <InputDate />
         <InputPeople
@@ -33,9 +36,9 @@ function Form() {
             setFilter((filter) => !filter)
           }}
         />
-        <div className="form__div-btn">
+        <div className={classes.form__div_btn}>
           <input
-            className="form__input form__input-btn"
+            className={classes.form__input_btn}
             type="submit"
             value="Search"
           />

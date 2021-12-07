@@ -1,10 +1,13 @@
 import React from 'react'
+import useStyles from './TopSection.styles'
 
 function Stores() {
+  const classes = useStyles()
+
   return (
-    <div className="top-section__apps">
-      <div className="top-section__apps-google"></div>
-      <div className="top-section__apps-apple"></div>
+    <div className={classes.top_section__apps}>
+      <div className={classes.top_section__apps_google}></div>
+      <div className={classes.top_section__apps_apple}></div>
     </div>
   )
 }

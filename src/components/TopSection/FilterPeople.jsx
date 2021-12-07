@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import Selectors from './Selectors.jsx'
 
 import { useDispatch, useSelector } from 'react-redux'
+import useStyles from './TopSection.styles'
 
 import {
   setAdultsInfo,
@@ -11,6 +12,8 @@ import {
 } from '../../redux/actions/formActions'
 
 function FilterPeople() {
+  const classes = useStyles()
+
   const people = useSelector(({ form }) => form)
   const dispatch = useDispatch()
 
@@ -106,15 +109,14 @@ function FilterPeople() {
   }, [dispatch, rooms])
 
   return (
-    <div className="form__filter-people-focus">
-      <div className="form__filter-div">
+    <div className={classes.form__filter_people_focus}>
+      <div className={classes.form__filter_div}>
         <span>
           <label htmlFor="adults">Adults</label>
         </span>
         <div>
           <button
             disabled={isDisabled.adultsBtnDec}
-            className={isDisabled.adultsBtnDec ? 'disabled' : ''}
             value="dec"
             onClick={handleClickDec('adults')}
           >
@@ -123,7 +125,6 @@ function FilterPeople() {
           <input value={adults} id="adults" type="text" readOnly />
           <button
             disabled={isDisabled.adultsBtnInc}
-            className={isDisabled.adultsBtnInc ? 'disabled' : ''}
             value="inc"
             onClick={handleClickInc('adults')}
           >
@@ -131,14 +132,13 @@ function FilterPeople() {
           </button>
         </div>
       </div>
-      <div className="form__filter-div">
+      <div className={classes.form__filter_div}>
         <span>
           <label htmlFor="children">Children</label>
         </span>
         <div>
           <button
             disabled={isDisabled.childrenBtnDec}
-            className={isDisabled.childrenBtnDec ? 'disabled' : ''}
             value="dec"
             onClick={handleClickDec('children')}
           >
@@ -147,7 +147,6 @@ function FilterPeople() {
           <input value={children} id="children" type="text" readOnly />
           <button
             disabled={isDisabled.childrenBtnInc}
-            className={isDisabled.childrenBtnInc ? 'disabled' : ''}
             value="inc"
             onClick={handleClickInc('children')}
           >
@@ -155,14 +154,13 @@ function FilterPeople() {
           </button>
         </div>
       </div>
-      <div className="form__filter-div">
+      <div className={classes.form__filter_div}>
         <span>
           <label htmlFor="rooms">Rooms</label>
         </span>
         <div>
           <button
             disabled={isDisabled.roomsBtnDec}
-            className={isDisabled.roomsBtnDec ? 'disabled' : ''}
             value="dec"
             onClick={handleClickDec('rooms')}
           >
@@ -171,7 +169,6 @@ function FilterPeople() {
           <input value={rooms} id="rooms" type="text" readOnly />
           <button
             disabled={isDisabled.roomsBtnInc}
-            className={isDisabled.roomsBtnInc ? 'disabled' : ''}
             value="inc"
             onClick={handleClickInc('rooms')}
           >
