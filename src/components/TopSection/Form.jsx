@@ -22,6 +22,7 @@ function Form() {
     (event) => {
       event.preventDefault()
       dispatch(getAvailableHotels())
+      setFilter((filter) => !filter)
     },
     [dispatch],
   )

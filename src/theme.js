@@ -1,10 +1,14 @@
 export const lightTheme = {
   color: {
+    generalWhite: '#FFFFFF',
+    generalBlack: '#383838',
     bgHotels: '#f3e0db',
     bgFooter: '#904a37',
-    secondary: '#efbfad',
+    bgDescribtion: '#efbfad',
+    primaryText: '#343008',
+    secondaryText: '#d47e5f',
   },
-  backgroundHeader: {
+  bgHeader: {
     margin: '0px auto',
     padding: '51px 104px 120px 104px',
     background: 'url(/images/bg_header_light.jpg)',
@@ -13,6 +17,12 @@ export const lightTheme = {
   },
   logo: {
     image: 'url(/images/logo_white.svg)',
+  },
+  actions: {
+    hover: {
+      opacity: 0.7,
+      cursor: 'pointer',
+    },
   },
   typography: {
     fontWeightRegular: 400,
@@ -68,16 +78,26 @@ export const lightTheme = {
       lineHeight: '28px',
       color: '#d47e5f',
     },
+    a: {
+      fontWeight: 400,
+      fontSize: '24px',
+      lineHeight: '28px',
+      textDecoration: 'none',
+    },
   },
 }
 
 export const darkTheme = {
   color: {
+    generalWhite: '#FFFFFF',
+    generalBlack: '#383838',
     bgHotels: '#EAF0F9',
     bgFooter: '#10367C',
-    secondary: '#cddcf1',
+    bgDescribtion: '#cddcf1',
+    primaryText: '#3077c6',
+    secondaryText: '#bfbfbf',
   },
-  backgroundHeader: {
+  bgHeader: {
     margin: '0px auto',
     padding: '51px 104px 120px 104px',
     background: 'url(/images/bg_header.svg)',
@@ -86,6 +106,12 @@ export const darkTheme = {
   },
   logo: {
     image: 'url(/images/logo.svg)',
+  },
+  actions: {
+    hover: {
+      opacity: 0.7,
+      cursor: 'pointer',
+    },
   },
   typography: {
     fontWeightRegular: 400,
@@ -130,7 +156,7 @@ export const darkTheme = {
       color: '#ffffff',
     },
     describtionName: {
-      fontWeight: 400,
+      fontWeight: 500,
       fontSize: '24px',
       lineHeight: '28px',
       color: '#3077c6',
@@ -140,6 +166,12 @@ export const darkTheme = {
       fontSize: '24px',
       lineHeight: '28px',
       color: '#bfbfbf',
+    },
+    a: {
+      fontWeight: 400,
+      fontSize: '24px',
+      lineHeight: '28px',
+      textDecoration: 'none',
     },
   },
 }

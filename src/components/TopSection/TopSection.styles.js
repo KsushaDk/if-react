@@ -20,7 +20,7 @@ const formInput = {
 export const topSectionStyles = (theme) => {
   return {
     top_section: {
-      ...theme.backgroundHeader,
+      ...theme.bgHeader,
     },
     top_section__navigation: {
       display: 'flex',
@@ -28,7 +28,7 @@ export const topSectionStyles = (theme) => {
       marginBottom: '200px',
     },
     navigation_logo: {
-      width: '205px',
+      width: '207px',
       height: '40px',
       background: {
         image: `${theme.logo.image}`,
@@ -45,14 +45,21 @@ export const topSectionStyles = (theme) => {
     navigation_div_text: {
       marginLeft: '25px',
       position: 'relative',
-      '&hover::after': {
-        background: ' #f5bd41',
-        content: '',
-        width: '100%',
-        height: '4px',
-        position: 'absolute',
-        top: '38px',
-        left: '0px',
+      '& a': {
+        ...theme.typography.describtionPlace,
+        color: '#FFFFFF',
+        textDecoration: 'none',
+      },
+      '&:hover': {
+        '&::after': {
+          background: ' #f5bd41',
+          content: "''",
+          width: '100%',
+          height: '4px',
+          position: 'absolute',
+          top: '38px',
+          left: '0px',
+        },
       },
     },
     navigation_div_picture_night: {
@@ -89,7 +96,7 @@ export const topSectionStyles = (theme) => {
       top: '120px',
       right: '104px',
       backgroundColor: '#f9f9f9',
-      background: '#ffffff',
+      background: `${theme.color.generalWhite}`,
       border: '1px solid #cecece',
       borderRadius: '8px',
       boxSizing: 'border-box',
@@ -170,6 +177,9 @@ export const topSectionStyles = (theme) => {
         boxSizing: 'border-box',
         cursor: 'pointer',
         ...theme.typography.button,
+        '&:hover': {
+          opacity: 0.9,
+        },
       },
     },
     form__label: {
@@ -189,6 +199,13 @@ export const topSectionStyles = (theme) => {
         image: 'url(/images/app_store.svg)',
         size: 'cover',
       },
+      '& a': {
+        display: 'block',
+        height: '100%',
+      },
+      '&:hover': {
+        ...theme.actions.hover,
+      },
     },
     top_section__apps_google: {
       width: '135px',
@@ -197,6 +214,13 @@ export const topSectionStyles = (theme) => {
       background: {
         image: 'url(/images/google_play.svg)',
         size: 'cover',
+      },
+      '& a': {
+        display: 'block',
+        height: '100%',
+      },
+      '&:hover': {
+        ...theme.actions.hover,
       },
     },
 
@@ -215,7 +239,7 @@ export const topSectionStyles = (theme) => {
       lineHeight: '19px',
       color: '#333333',
       borderRadius: '8px',
-      backgroundColor: '#ffffff',
+      backgroundColor: `${theme.color.generalWhite}`,
     },
     form__filter_div: {
       display: 'flex',
@@ -232,7 +256,7 @@ export const topSectionStyles = (theme) => {
         height: '30px',
         border: `1px solid ${theme.typography.button.background}`,
         color: `${theme.typography.button.background}`,
-        backgroundColor: '#ffffff',
+        backgroundColor: `${theme.color.generalWhite}`,
         '&:disabled': {
           border: '1px solid #cecece',
           color: '#cecece',
@@ -261,7 +285,7 @@ export const topSectionStyles = (theme) => {
 
     wrapper__sign_in: {
       height: '100vh',
-      ...theme.backgroundHeader,
+      ...theme.bgHeader,
     },
     top_section__sign_in: {
       display: 'flex',
@@ -270,7 +294,7 @@ export const topSectionStyles = (theme) => {
       padding: '40px',
       margin: '0 auto',
       marginBottom: '197px',
-      background: '#ffffff',
+      background: `${theme.color.generalWhite}`,
       border: '1px solid #cecece',
       boxSizing: 'border-box',
       borderRadius: '8px',
@@ -307,7 +331,7 @@ export const topSectionStyles = (theme) => {
         fontWeight: 400,
         fontSize: '18px',
         lineHeight: '21px',
-        background: '#ffffff',
+        background: `${theme.color.generalWhite}`,
         border: '2px solid #cecece',
         boxSizing: 'border-box',
         borderRadius: '8px',

@@ -6,8 +6,12 @@ function Stores() {
 
   return (
     <div className={classes.top_section__apps}>
-      <div className={classes.top_section__apps_google}></div>
-      <div className={classes.top_section__apps_apple}></div>
+      <div className={classes.top_section__apps_google}>
+        <a href="#"></a>
+      </div>
+      <div className={classes.top_section__apps_apple}>
+        <a href="#"></a>
+      </div>
     </div>
   )
 }

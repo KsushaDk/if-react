@@ -14,10 +14,7 @@ function AvailableHotels({ title, hotels }) {
         {hotels.slice(0, 4).map((item) => {
           return (
             <div key={item.id}>
-              <Link
-                to={`/hotels/${item.id}`}
-                className={classes.available_hotel__link}
-              >
+              <Link to={`/hotels/${item.id}`}>
                 <img
                   className={classes.hotels__carrousel_img}
                   src={item.imageUrl}

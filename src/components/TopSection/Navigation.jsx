@@ -36,8 +36,12 @@ function Navigation() {
     <nav className={classes.top_section__navigation}>
       <div className={classes.navigation_logo} />
       <div className={classes.navigation_group}>
-        <div className={classes.navigation_div_text}>Stays</div>
-        <div className={classes.navigation_div_text}>Attractions</div>
+        <div className={classes.navigation_div_text}>
+          <a href="#">Stays</a>
+        </div>
+        <div className={classes.navigation_div_text}>
+          <a href="#">Attractions</a>
+        </div>
         <div
           className={classes.navigation_div_picture_night}
           onClick={handleThemeClick}

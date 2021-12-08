@@ -12,9 +12,13 @@ function HotelItem({ item }) {
         src={item.imageUrl}
         alt={item.name}
       />
-      <p className={classes.hotels__carrousel_p_name}>{item.name}</p>
+      <p className={classes.hotels__carrousel_p_name}>
+        <a href="#">{item.name}</a>
+      </p>
       <p className={classes.hotels__carrousel_p_place}>
-        {item.city}, {item.country}
+        <a href="#">
+          {item.city}, {item.country}
+        </a>
       </p>
     </div>
   )

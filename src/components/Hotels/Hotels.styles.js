@@ -13,20 +13,32 @@ export const hotelsStyles = (theme) => {
       display: 'flex',
       justifyContent: 'space-around',
       paddingBottom: '120px',
+      '& a': {
+        ...theme.typography.a,
+        color: `${theme.color.primaryText}`,
+      },
     },
     hotels__carrousel_img: {
       width: '296px',
       height: '296px',
       objectFit: 'cover',
-    },
-    available_hotel__link: {
-      textDecoration: 'none',
+      '&:hover': {
+        ...theme.actions.hover,
+      },
     },
     hotels__carrousel_p_name: {
-      ...theme.typography.describtionName,
+      color: `${theme.color.primaryText}`,
+      '& a': {
+        ...theme.typography.a,
+        color: `${theme.color.primaryText}`,
+      },
     },
     hotels__carrousel_p_place: {
-      ...theme.typography.describtionPlace,
+      color: `${theme.color.secondaryText}`,
+      '& a': {
+        ...theme.typography.a,
+        color: `${theme.color.secondaryText}`,
+      },
     },
     available_hotel__item: {
       margin: '0 auto',
@@ -44,7 +56,7 @@ export const hotelsStyles = (theme) => {
       borderRadius: '8px',
       alignSelf: 'flex-end',
       padding: '20px 25px',
-      background: `${theme.color.secondary}`,
+      background: `${theme.color.bgDescribtion}`,
     },
     available_hotel__title: {
       ...theme.typography.h3,
@@ -73,6 +85,9 @@ export const hotelsStyles = (theme) => {
       boxSizing: 'border-box',
       cursor: 'pointer',
       alignSelf: 'flex-start',
+      '&:hover': {
+        ...theme.actions.hover,
+      },
     },
     available_hotel__btn_book: {
       position: 'absolute',
@@ -85,7 +100,10 @@ export const hotelsStyles = (theme) => {
       boxSizing: 'border-box',
       cursor: 'pointer',
       color: `${theme.color.bgFooter}`,
-      background: '#ffffff',
+      background: `${theme.color.generalWhite}`,
+      '&:hover': {
+        ...theme.actions.hover,
+      },
     },
     available_hotel__picture: {
       display: 'flex',

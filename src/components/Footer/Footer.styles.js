@@ -27,6 +27,9 @@ export const footerStyles = (theme) => {
               fontSize: '20px',
               lineHeight: '23px',
               color: '#FFFFFF',
+              '&:hover': {
+                ...theme.actions.hover,
+              },
             },
           },
         },
