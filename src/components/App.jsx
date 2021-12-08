@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { Switch } from 'react-router'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { ThemeProvider } from 'react-jss'
 
 //actions
 import { getPopularHotels } from '../redux/actions'
 
 //styles
 import '../index.css'
+import { lightTheme, darkTheme } from '../theme'
 
 //containers
 import PublicRoute from '../containers/PublicRoute.jsx'
@@ -17,6 +19,7 @@ import SignIn from './TopSection/SignIn.jsx'
 
 function App() {
   const dispatch = useDispatch()
+  const theme = useSelector(({ theme }) => theme.theme)
 
   useEffect(() => {
     dispatch(getPopularHotels())
@@ -24,13 +27,14 @@ function App() {
 
   return (
     <>
-      <Switch>
-        <PublicRoute exact path="/signin">
-          <SignIn />
-        </PublicRoute>
-
-        <HotelRoutes />
-      </Switch>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <Switch>
+          <PublicRoute exact path="/signin">
+            <SignIn />
+          </PublicRoute>
+          <HotelRoutes />
+        </Switch>
+      </ThemeProvider>
     </>
   )
 }

@@ -2,11 +2,14 @@ import React, { useState, useCallback } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser, addUser } from '../../redux/actions'
+import useStyles from './TopSection.styles'
 
 //component
 import Navigation from './Navigation.jsx'
 
 function SignIn() {
+  const classes = useStyles()
+
   const [state, setState] = useState({ email: '', password: '' })
   const user = useSelector(({ user }) => {
     return user
@@ -16,7 +19,7 @@ function SignIn() {
   const dispatch = useDispatch()
 
   const handleChange = useCallback((event) => {
-    event.persist()
+    event.preventDefault()
     setState((prev) => ({
       ...prev,
       ...{ [event.target.name]: event.target.value },
@@ -43,17 +46,17 @@ function SignIn() {
   )
 
   return (
-    <div className="wrapper__sign-in">
+    <div className={classes.wrapper__sign_in}>
       <Navigation />
-      <div className="top-section__sign-in">
-        <h2 className="top-section__form-sign-in_title"> Sign in</h2>
-        <form className="top-section__form-sign-in" onSubmit={handleSubmit}>
+      <div className={classes.top_section__sign_in}>
+        <h2 className={classes.top_section__form_sign_in_title}> Sign in</h2>
+        <form
+          className={classes.top_section__form_sign_in}
+          onSubmit={handleSubmit}
+        >
           <div>
-            <label htmlFor="email" className="form-sign-in__label">
-              Email address
-            </label>
+            <label htmlFor="email">Email address</label>
             <input
-              className="form-sign-in__input"
               type="email"
               id="email"
               name="email"
@@ -62,11 +65,8 @@ function SignIn() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="form-sign-in__label">
-              Password
-            </label>
+            <label htmlFor="password">Password</label>
             <input
-              className="form-sign-in__input"
               type="password"
               id="password"
               name="password"
@@ -75,14 +75,12 @@ function SignIn() {
             />
           </div>
           <div>
-            <input
-              className="form-sign-in__input-btn"
-              type="submit"
-              value="Sign in"
-            />
+            <button className={classes.form_sign_in__btn} type="submit">
+              Sign in
+            </button>
           </div>
           {warning && (
-            <div className="form-sign-in__warning">
+            <div className={classes.form_sign_in__warning}>
               Password is incorrect. Please try again.
             </div>
           )}

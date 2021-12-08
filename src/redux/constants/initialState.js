@@ -1,3 +1,7 @@
+export const initialThemeState = {
+  theme: 'dark',
+}
+
 export const initialUserState = {
   isAuthenticated: false,
   email: '',

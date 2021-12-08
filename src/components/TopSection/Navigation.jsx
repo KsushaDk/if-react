@@ -1,12 +1,17 @@
 import React, { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useDispatch } from 'react-redux'
-import { logoutUser } from '../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUser, setTheme } from '../../redux/actions'
+
+import useStyles from './TopSection.styles'
 
 function Navigation() {
-  const [showSignOut, setSignOut] = useState(false)
+  const classes = useStyles()
   const dispatch = useDispatch()
+
+  const [showSignOut, setSignOut] = useState(false)
+  const theme = useSelector(({ theme }) => theme.theme)
 
   const handleClick = useCallback(
     (event) => {
@@ -17,16 +22,33 @@ function Navigation() {
     [dispatch],
   )
 
+  const handleThemeClick = useCallback(
+    (event) => {
+      event.preventDefault()
+      theme === 'light'
+        ? dispatch(setTheme('dark'))
+        : dispatch(setTheme('light'))
+    },
+    [dispatch, theme],
+  )
+
   return (
-    <nav className="top-section__navigation">
-      <div className="navigation-logo" />
-      <div className="navigation_group">
-        <div className="navigation_div-text">Stays</div>
-        <div className="navigation_div-text">Attractions</div>
-        <div className="navigation_div-picture-night" />
+    <nav className={classes.top_section__navigation}>
+      <div className={classes.navigation_logo} />
+      <div className={classes.navigation_group}>
+        <div className={classes.navigation_div_text}>
+          <a href="#">Stays</a>
+        </div>
+        <div className={classes.navigation_div_text}>
+          <a href="#">Attractions</a>
+        </div>
+        <div
+          className={classes.navigation_div_picture_night}
+          onClick={handleThemeClick}
+        />
 
         <div
-          className="navigation_div-picture-user"
+          className={classes.navigation_div_picture_user}
           onClick={() => {
             setSignOut((showSignOut) => !showSignOut)
           }}
@@ -34,11 +56,11 @@ function Navigation() {
       </div>
 
       {showSignOut && (
-        <div className="navigation_dropdowm-sign-out">
-          <div className="navigation_dropdowm-sign-out-icon"></div>
+        <div className={classes.navigation_dropdowm_sign_out}>
+          <div className={classes.navigation_dropdowm_sign_out_icon}></div>
           <Link to="/">
             <div
-              className="navigation_dropdowm-sign-out-btn"
+              className={classes.navigation_dropdowm_sign_out_btn}
               onClick={handleClick}
             >
               Sign Out

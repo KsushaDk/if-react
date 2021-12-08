@@ -2,8 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { setChildrenAge } from '../../redux/actions'
+import useStyles from './TopSection.styles'
 
 function Selectors({ selectors }) {
+  const classes = useStyles()
+
   const dispatch = useDispatch()
   const [age, setAge] = useState([])
 
@@ -36,7 +39,7 @@ function Selectors({ selectors }) {
 
   if (selectors > 0) {
     return (
-      <div className="form__filter-div selector">
+      <div className={classes.form__filter_people_focus_selector}>
         <label>
           What is the age of the child you’re
           <br />

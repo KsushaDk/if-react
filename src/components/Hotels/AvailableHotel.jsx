@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import ReactLoading from 'react-loading'
 import { useParams, Link } from 'react-router-dom'
-import '../../index.css'
+import useStyles from './Hotels.styles'
 
 function AvailableHotel() {
   const params = useParams()
+  const classes = useStyles()
 
   const [availableHotel, setAvailableHotel] = useState(null)
   const [error, setError] = useState(null)
@@ -54,24 +55,30 @@ function AvailableHotel() {
     )
   } else {
     return (
-      <div className="available-hotel__item">
-        <div>
+      <div className={classes.available_hotel__item}>
+        <div className={classes.available_hotel__info}>
           <div>
-            <Link to="/hotels" className="available-hotel__link">
-              <button className="available-hotel__btn-back">Back</button>
+            <Link to="/hotels" className={classes.available_hotel__link}>
+              <button className={classes.available_hotel__btn_back}>
+                Back
+              </button>
             </Link>
           </div>
-          <div className="available-hotel__description">
-            <h2 className="available-hotel__title">{availableHotel.name}</h2>
-            <p className="available-hotel_p-place">
+          <div className={classes.available_hotel__description}>
+            <h2 className={classes.available_hotel__title}>
+              {availableHotel.name}
+            </h2>
+            <p className={classes.available_hotel_p_place}>
               {availableHotel.city}, {availableHotel.country}
             </p>
           </div>
         </div>
-        <div className="available-hotel__picture">
-          <button className="available-hotel__btn-book">Book now</button>
+        <div className={classes.available_hotel__picture}>
+          <button className={classes.available_hotel__btn_book}>
+            Book now
+          </button>
           <img
-            className="available-hotel_img"
+            className={classes.available_hotel_img}
             src={availableHotel.imageUrl}
             alt={availableHotel.name}
           />

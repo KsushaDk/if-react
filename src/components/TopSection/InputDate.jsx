@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import useStyles from './TopSection.styles'
 
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -8,6 +9,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { setDateFromInfo, setDateToInfo } from '../../redux/actions/formActions'
 
 function InputDate() {
+  const classes = useStyles()
+
   const dispatch = useDispatch()
   const dates = useSelector(({ form }) => form)
 
@@ -29,10 +32,10 @@ function InputDate() {
   }, [dispatch, dateTo])
 
   return (
-    <div className="form__div-date">
-      <label className="form__label">Check-in-Check-out </label>
+    <div className={classes.form__div_date}>
+      <label className={classes.form__label}>Check-in-Check-out </label>
       <DatePicker
-        className="form__input"
+        className={classes.form__input_date}
         placeholderText="Check-in — Check-out"
         minDate={new Date()}
         onChange={handleDateChange}

@@ -1,23 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import useStyles from './TopSection.styles'
 
 function InputPeople({ onClick }) {
+  const classes = useStyles()
+
   const people = useSelector(({ form }) => form)
   return (
-    <div className="form__div-people" onClick={onClick}>
+    <div className={classes.form__div_people} onClick={onClick}>
       <input
-        className="form__input form__input-people"
+        className={classes.form__input_people}
         type="text"
         placeholder={`${people.adults}` + ' ' + 'Adults'}
       />
       <input
-        className="form__input form__input-people"
+        className={classes.form__input_people}
         type="text"
         placeholder={`${people.children}` + ' ' + 'Children'}
       />
       <input
-        className="form__input form__input-people-last"
+        className={classes.form__input_people_last}
         type="text"
         placeholder={`${people.rooms}` + ' ' + 'Room'}
       />
