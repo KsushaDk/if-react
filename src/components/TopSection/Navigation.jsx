@@ -1,23 +1,23 @@
 import React, { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutUser, setTheme } from '../../redux/actions'
-
 import useStyles from './TopSection.styles'
+
+//actions
+import { logoutUser, setTheme } from '../../redux/actions'
 
 function Navigation() {
   const classes = useStyles()
   const dispatch = useDispatch()
 
-  const [showSignOut, setSignOut] = useState(false)
+  const [signOut, setSignOut] = useState(false)
   const theme = useSelector(({ theme }) => theme.theme)
 
   const handleClick = useCallback(
     (event) => {
       event.preventDefault()
       dispatch(logoutUser(false))
-      setSignOut((showSignOut) => !showSignOut)
+      setSignOut((signOut) => !signOut)
     },
     [dispatch],
   )
@@ -50,12 +50,13 @@ function Navigation() {
         <div
           className={classes.navigation_div_picture_user}
           onClick={() => {
-            setSignOut((showSignOut) => !showSignOut)
+            setSignOut((signOut) => !signOut)
           }}
         />
+        <div className={classes.navigation_div_picture_menu} />
       </div>
 
-      {showSignOut && (
+      {signOut && (
         <div className={classes.navigation_dropdowm_sign_out}>
           <div className={classes.navigation_dropdowm_sign_out_icon}></div>
           <Link to="/">

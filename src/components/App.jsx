@@ -14,7 +14,7 @@ import { lightTheme, darkTheme } from '../theme'
 import PublicRoute from '../containers/PublicRoute.jsx'
 
 //routes
-import HotelRoutes from '../routes/HotelRoutes.jsx'
+import MainContentRoutes from '../routes/MainContentRoutes.jsx'
 import SignIn from './TopSection/SignIn.jsx'
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
           <PublicRoute exact path="/signin">
             <SignIn />
           </PublicRoute>
-          <HotelRoutes />
+          <MainContentRoutes />
         </Switch>
       </ThemeProvider>
     </>

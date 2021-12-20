@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useStyles from './TopSection.styles'
+import PropTypes from 'prop-types'
 
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 //actions
-import { setDateFromInfo, setDateToInfo } from '../../redux/actions/formActions'
+import { setDateFromInfo, setDateToInfo } from '../../redux/actions'
 
-function InputDate() {
+function InputDate({ onClick }) {
   const classes = useStyles()
 
   const dispatch = useDispatch()
@@ -24,15 +25,19 @@ function InputDate() {
   }, [])
 
   useEffect(() => {
-    dispatch(setDateFromInfo(Date.parse(dateFrom)))
+    if (dateFrom !== null) {
+      dispatch(setDateFromInfo(Date.parse(dateFrom)))
+    }
   }, [dispatch, dateFrom])
 
   useEffect(() => {
-    dispatch(setDateToInfo(Date.parse(dateTo)))
+    if (dateTo !== null) {
+      dispatch(setDateToInfo(Date.parse(dateTo)))
+    }
   }, [dispatch, dateTo])
 
   return (
-    <div className={classes.form__div_date}>
+    <div className={classes.form__div_date} onClick={onClick}>
       <label className={classes.form__label}>Check-in-Check-out </label>
       <DatePicker
         className={classes.form__input_date}
@@ -46,6 +51,10 @@ function InputDate() {
       />
     </div>
   )
+}
+
+InputDate.propTypes = {
+  onClick: PropTypes.func,
 }
 
 InputDate.displayName = 'InputDate'

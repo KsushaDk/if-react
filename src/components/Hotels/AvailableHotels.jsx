@@ -10,7 +10,7 @@ function AvailableHotels({ title, hotels }) {
     <div className={classes.hotels}>
       <h2 className={classes.hotels__title}>{title}</h2>
 
-      <div className={classes.hotels__carrousel}>
+      <div className={classes.available_hotels__carrousel}>
         {hotels.slice(0, 4).map((item) => {
           return (
             <div key={item.id}>

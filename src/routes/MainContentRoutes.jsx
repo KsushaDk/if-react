@@ -9,13 +9,18 @@ import PrivateRoute from '../containers/PrivateRoute.jsx'
 import AvailableHotel from '../components/Hotels/AvailableHotel.jsx'
 import HotelItems from '../components/Hotels/HotelItems.jsx'
 import AvailableHotels from '../components/Hotels/AvailableHotels.jsx'
+import Offers from '../components/Offers/Offers.jsx'
+import Destinations from '../components/Destinations/Destinations.jsx'
+import SignUp from '../components/SignUp/SignUp.jsx'
+import Reviews from '../components/Reviews/Reviews.jsx'
 
-function HotelRoutes() {
+function MainContentRoutes() {
   const availableHotels = useSelector(({ hotels }) => hotels.available || [])
 
   return (
     <Switch>
       <PrivateRoute exact path="/">
+        <Offers />
         {!!availableHotels.length && (
           <AvailableHotels
             hotels={availableHotels}
@@ -24,6 +29,10 @@ function HotelRoutes() {
         )}
 
         <HotelItems title={'Homes guests loves'} />
+
+        <Destinations />
+        <SignUp />
+        <Reviews />
       </PrivateRoute>
 
       <PrivateRoute exact path="/hotels/:id">
@@ -37,4 +46,4 @@ function HotelRoutes() {
   )
 }
 
-export default HotelRoutes
+export default MainContentRoutes

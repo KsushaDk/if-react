@@ -10,9 +10,10 @@ export const lightTheme = {
   },
   bgHeader: {
     margin: '0px auto',
-    padding: '51px 104px 120px 104px',
+    padding: '3% 5% 10%',
     background: 'url(/images/bg_header_light.jpg)',
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     color: '#FFFFFF',
   },
   logo: {
@@ -27,31 +28,24 @@ export const lightTheme = {
   typography: {
     fontWeightRegular: 400,
     fontWeightMedium: 500,
+    mobile: {
+      fontSize: '28px',
+      lineHeight: '33px',
+      textAlign: 'center',
+      color: '#383838',
+    },
     h1: {
       fontSize: '50px',
       lineHeight: '59px',
       fontWeight: 500,
       textAlign: 'left',
-      margin: '0px 0px 100px',
-      color: '#FFFFFF',
     },
     h2: {
       fontSize: '40px',
       lineHeight: '47px',
       fontWeight: 500,
       textAlign: 'center',
-      paddingTop: '120px',
-      paddingBottom: '105px',
-      margin: 0,
       color: '#383838',
-    },
-    h3: {
-      fontSize: '40px',
-      lineHeight: '47px',
-      fontWeight: 500,
-      paddingBottom: '50px',
-      margin: 0,
-      color: '#343008',
     },
     label: {
       lineHeight: '21px',
@@ -63,8 +57,15 @@ export const lightTheme = {
       boxSizing: 'border-box',
     },
     button: {
+      fontWeight: 500,
+      fontSize: '24px',
+      lineHeight: '28px',
+      textAlign: 'center',
       background: '#d47e5f',
       color: '#ffffff',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      border: 'none',
     },
     describtionName: {
       fontWeight: 500,
@@ -99,9 +100,10 @@ export const darkTheme = {
   },
   bgHeader: {
     margin: '0px auto',
-    padding: '51px 104px 120px 104px',
+    padding: '3% 7% 10%',
     background: 'url(/images/bg_header.svg)',
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     color: '#FFFFFF',
   },
   logo: {
@@ -116,31 +118,24 @@ export const darkTheme = {
   typography: {
     fontWeightRegular: 400,
     fontWeightMedium: 500,
+    mobile: {
+      fontSize: '28px',
+      lineHeight: '33px',
+      textAlign: 'center',
+      color: '#383838',
+    },
     h1: {
       fontSize: '50px',
       lineHeight: '59px',
       fontWeight: 500,
       textAlign: 'left',
-      margin: '0px 0px 100px',
-      color: '#FFFFFF',
     },
     h2: {
       fontSize: '40px',
       lineHeight: '47px',
       fontWeight: 500,
       textAlign: 'center',
-      paddingTop: '120px',
-      paddingBottom: '105px',
-      margin: 0,
       color: '#383838',
-    },
-    h3: {
-      fontSize: '40px',
-      lineHeight: '47px',
-      fontWeight: 500,
-      paddingBottom: '50px',
-      margin: 0,
-      color: '#0e254a',
     },
     label: {
       lineHeight: '21px',
@@ -152,8 +147,15 @@ export const darkTheme = {
       boxSizing: 'border-box',
     },
     button: {
+      fontWeight: 400,
+      fontSize: '24px',
+      lineHeight: '28px',
+      textAlign: 'center',
       background: '#3077c6',
       color: '#ffffff',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      border: 'none',
     },
     describtionName: {
       fontWeight: 500,

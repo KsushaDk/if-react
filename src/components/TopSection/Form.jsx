@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import useStyles from './TopSection.styles'
 
 //actions
-import { getAvailableHotels } from '../../redux/actions/hotelActions'
+import { getAvailableHotels } from '../../redux/actions'
 
 //components
 import InputDestination from './InputDestination.jsx'
@@ -12,17 +12,16 @@ import InputPeople from './InputPeople.jsx'
 import FilterPeople from './FilterPeople.jsx'
 
 function Form() {
+  const dispatch = useDispatch()
   const classes = useStyles()
 
   const [filter, setFilter] = useState(false)
-
-  const dispatch = useDispatch()
 
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault()
       dispatch(getAvailableHotels())
-      setFilter((filter) => !filter)
+      setFilter(false)
     },
     [dispatch],
   )
@@ -30,8 +29,16 @@ function Form() {
   return (
     <>
       <form className={classes.top_section__form} onSubmit={handleSubmit}>
-        <InputDestination />
-        <InputDate />
+        <InputDestination
+          onClick={() => {
+            setFilter(false)
+          }}
+        />
+        <InputDate
+          onClick={() => {
+            setFilter(false)
+          }}
+        />
         <InputPeople
           onClick={() => {
             setFilter((filter) => !filter)

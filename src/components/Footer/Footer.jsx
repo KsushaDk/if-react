@@ -6,6 +6,7 @@ function Footer() {
 
   return (
     <div className={classes.footer}>
+      <div className={classes.footer__logo}></div>
       <div>
         <ul>
           <li>
@@ -59,9 +60,11 @@ function Footer() {
           </li>
         </ul>
       </div>
-      <p className={classes.footer__text}>
-        &#xA9; 2020 Triphouse, Inc. All rights reserved
-      </p>
+      <div>
+        <p className={classes.footer__text}>
+          &#xA9; 2020 Triphouse, Inc. All rights reserved
+        </p>
+      </div>
     </div>
   )
 }

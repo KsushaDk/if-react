@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useStyles from './TopSection.styles'
+import PropTypes from 'prop-types'
 
 //actions
-import { setDestinationInfo } from '../../redux/actions/formActions'
+import { setDestinationInfo } from '../../redux/actions'
 
-function InputDestination() {
+function InputDestination({ onClick }) {
   const classes = useStyles()
 
   const dispatch = useDispatch()
@@ -19,7 +20,7 @@ function InputDestination() {
   )
 
   return (
-    <div className={classes.form__div_destination}>
+    <div className={classes.form__div_destination} onClick={onClick}>
       <label htmlFor="search" className={classes.form__label}>
         Your destination or hotel name
       </label>
@@ -32,6 +33,10 @@ function InputDestination() {
       />
     </div>
   )
+}
+
+InputDestination.propTypes = {
+  onClick: PropTypes.func,
 }
 
 InputDestination.displayName = 'InputDestination'
