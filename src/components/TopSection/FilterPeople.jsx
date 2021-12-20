@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useCallback } from 'react'
-
-import Selectors from './Selectors.jsx'
-
 import { useDispatch, useSelector } from 'react-redux'
 import useStyles from './TopSection.styles'
 
+//actions
 import {
   setAdultsInfo,
   setChildrenInfo,
   setRoomsInfo,
-} from '../../redux/actions/formActions'
+} from '../../redux/actions'
+
+//components
+import Selectors from './Selectors.jsx'
 
 function FilterPeople() {
   const classes = useStyles()

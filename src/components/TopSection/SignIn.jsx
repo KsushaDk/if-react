@@ -1,22 +1,22 @@
 import React, { useState, useCallback } from 'react'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { loginUser, addUser } from '../../redux/actions'
 import useStyles from './TopSection.styles'
+import { useDispatch, useSelector } from 'react-redux'
+
+//actions
+import { loginUser, addUser } from '../../redux/actions'
 
 //component
 import Navigation from './Navigation.jsx'
 
 function SignIn() {
+  const dispatch = useDispatch()
   const classes = useStyles()
 
   const [state, setState] = useState({ email: '', password: '' })
   const user = useSelector(({ user }) => {
     return user
   })
-
   const [warning, setWarning] = useState(false)
-  const dispatch = useDispatch()
 
   const handleChange = useCallback((event) => {
     event.preventDefault()
@@ -62,6 +62,7 @@ function SignIn() {
               name="email"
               value={state.email}
               onChange={handleChange}
+              required
             />
           </div>
           <div>
@@ -72,6 +73,7 @@ function SignIn() {
               name="password"
               value={state.password}
               onChange={handleChange}
+              required
             />
           </div>
           <div>

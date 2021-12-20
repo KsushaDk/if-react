@@ -5,8 +5,10 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 import ReactLoading from 'react-loading'
 
+//styles
 import './index.css'
 
+//components
 import App from './components/App.jsx'
 
 //store
@@ -20,7 +22,7 @@ ReactDOM.render(
           <ReactLoading
             className="loading"
             type={'bubbles'}
-            color={'#3077c6'}
+            color={'#f3f3f4'}
             height="10"
             width="10"
           />

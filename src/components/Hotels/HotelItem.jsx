@@ -6,7 +6,7 @@ function HotelItem({ item }) {
   const classes = useStyles()
 
   return (
-    <div>
+    <div className={classes.hotels__slider_div}>
       <img
         className={classes.hotels__carrousel_img}
         src={item.imageUrl}

@@ -5,9 +5,9 @@ import { setChildrenAge } from '../../redux/actions'
 import useStyles from './TopSection.styles'
 
 function Selectors({ selectors }) {
+  const dispatch = useDispatch()
   const classes = useStyles()
 
-  const dispatch = useDispatch()
   const [age, setAge] = useState([])
 
   const handleChange = useCallback((event) => {
