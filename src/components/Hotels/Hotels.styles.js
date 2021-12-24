@@ -126,8 +126,6 @@ export const hotelsStyles = (theme) => {
 
     '@media (max-width: 1024px)': {
       hotels: {
-        margin: '0 auto',
-        background: theme.color.bgHotels,
         padding: '5% 1%',
       },
       hotels__title: {
@@ -143,46 +141,28 @@ export const hotelsStyles = (theme) => {
         },
       },
       hotels__slider_div: {
-        margin: '0 auto',
         width: '156px',
-        height: '100%',
       },
       hotels__carrousel_img: {
         width: '200px',
         height: '200px',
-        objectFit: 'cover',
-        '&:hover': {
-          ...theme.actions.hover,
-        },
       },
       hotels__carrousel_p_name: {
-        color: `${theme.color.primaryText}`,
         '& a': {
           textDecoration: 'none',
           fontSize: '12px',
           lineHeight: '14px',
-          color: `${theme.color.primaryText}`,
-        },
-        '&:hover': {
-          ...theme.actions.hover,
         },
       },
       hotels__carrousel_p_place: {
-        color: `${theme.color.secondaryText}`,
         '& a': {
           textDecoration: 'none',
           fontSize: '12px',
           lineHeight: '14px',
-          color: `${theme.color.secondaryText}`,
-        },
-        '&:hover': {
-          ...theme.actions.hover,
         },
       },
 
       available_hotels__carrousel: {
-        display: 'flex',
-        justifyContent: 'space-around',
         flexDirection: 'column',
         alignItems: 'center',
         '& a': {
@@ -192,17 +172,9 @@ export const hotelsStyles = (theme) => {
         },
       },
       available_hotel__item: {
-        margin: '0 auto',
-        display: 'flex',
-        justifyContent: 'space-around',
-        flexDirection: 'column',
         padding: '10%',
-        background: theme.color.bgHotels,
       },
       available_hotel__info: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
         alignItems: 'center',
       },
       available_hotel__description: {
@@ -210,46 +182,19 @@ export const hotelsStyles = (theme) => {
           top: '5%',
           bottom: '5%',
         },
-        borderRadius: '8px',
         alignSelf: 'center',
         padding: '5% 7%',
-        background: `${theme.color.bgDescribtion}`,
       },
       available_hotel__title: {
         ...theme.typography.describtionName,
-        paddingBottom: '10%',
-        margin: 0,
-      },
-      available_hotel_p_place: {
-        fontWeight: 500,
-        fontSize: '25px',
-        lineHeight: '25px',
-        color: `${theme.color.bgFooter}`,
         margin: 0,
       },
       available_hotel_img: {
         width: '80%',
         height: '70%',
-        objectFit: 'cover',
-        borderRadius: '8px',
-      },
-      available_hotel__btn_back: {
-        ...theme.typography.button,
-        height: '50px',
-        width: '140px',
-        boxSizing: 'border-box',
-        alignSelf: 'flex-start',
-        '&:hover': {
-          ...theme.actions.hover,
-        },
       },
       available_hotel__btn_book: {
         display: 'none',
-      },
-      available_hotel__picture: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
       },
     },
   }
