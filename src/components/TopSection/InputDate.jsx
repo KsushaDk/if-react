@@ -41,7 +41,7 @@ function InputDate({ onClick }) {
       <label className={classes.form__label}>Check-in-Check-out </label>
       <DatePicker
         className={classes.form__input_date}
-        placeholderText="Check-in — Check-out"
+        placeholderText="Tue 15 Sept — Sat 19 Sept"
         minDate={new Date()}
         onChange={handleDateChange}
         startDate={dateFrom}

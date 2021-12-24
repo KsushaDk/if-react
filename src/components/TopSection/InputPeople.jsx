@@ -10,21 +10,20 @@ function InputPeople({ onClick }) {
   return (
     <div className={classes.form__div_people} onClick={onClick}>
       <input
-        className={classes.form__input_people}
         type="text"
-        placeholder={`${people.adults}` + ' ' + 'Adults'}
-        readOnly
-      />
-      <input
-        className={classes.form__input_people}
-        type="text"
-        placeholder={`${people.children}` + ' ' + 'Children'}
-        readOnly
-      />
-      <input
-        className={classes.form__input_people_last}
-        type="text"
-        placeholder={`${people.rooms}` + ' ' + 'Room'}
+        placeholder={
+          `${people.adults}` +
+          ' ' +
+          'Adults' +
+          ' - ' +
+          `${people.children}` +
+          ' ' +
+          'Children' +
+          ' - ' +
+          `${people.rooms}` +
+          ' ' +
+          'Room'
+        }
         readOnly
       />
     </div>

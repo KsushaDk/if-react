@@ -86,7 +86,6 @@ export const destinationsStyles = (theme) => {
     },
     '@media (max-width: 1024px)': {
       destinations: {
-        margin: '0 auto',
         padding: '5% 1%',
       },
       destinations__title: {
@@ -94,7 +93,6 @@ export const destinationsStyles = (theme) => {
         marginBottom: '5%',
       },
       destinations__btns: {
-        display: 'flex',
         justifyContent: 'space-around',
         '& button': {
           padding: '1% 3%',
@@ -122,7 +120,6 @@ export const destinationsStyles = (theme) => {
             fontSize: '19px',
             lineHeight: '22px',
             textDecoration: 'none',
-            color: `${theme.color.generalBlack}`,
           },
           '&:active': {
             ...theme.typography.button,
@@ -134,15 +131,9 @@ export const destinationsStyles = (theme) => {
               color: `${theme.color.generalWhite}`,
             },
           },
-          '&:hover': {
-            ...theme.actions.hover,
-          },
         },
       },
       destinations__carrousel: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        marginTop: '5%',
         '& div': {
           width: '40%',
           '&:nth-child(3)': {
@@ -151,25 +142,15 @@ export const destinationsStyles = (theme) => {
           '&:nth-child(4)': {
             display: 'none',
           },
-          '&:hover': {
-            ...theme.actions.hover,
-          },
         },
         '& p': {
-          marginTop: '2%',
           '& a': {
             fontWeight: 400,
             fontSize: '12px',
             lineHeight: '14px',
             textDecoration: 'none',
-            color: `${theme.color.primaryText}`,
           },
         },
-      },
-      destinations__carrousel_img: {
-        width: '100%',
-        height: '80%',
-        objectFit: 'cover',
       },
       destinations__btn_book: {
         display: 'none',

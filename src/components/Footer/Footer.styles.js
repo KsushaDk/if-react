@@ -46,33 +46,16 @@ export const footerStyles = (theme) => {
     '@media (max-width: 1024px)': {
       footer: {
         padding: '5% 10%',
-        background: theme.color.bgFooter,
-        color: '#FFFFFF',
         '& div': {
-          display: 'flex',
           justifyContent: 'space-around',
-          marginBottom: '5%',
           '& ul': {
-            listStyleType: 'none',
-            padding: 0,
-            margin: 0,
             '& li': {
-              '& span': {
-                fontWeight: 500,
-                fontSize: '20px',
-                lineHeight: '23px',
-              },
               '& a': {
                 display: 'none',
               },
             },
           },
         },
-      },
-      footer__text: {
-        fontWeight: 'normal',
-        fontSize: '14px',
-        lineHeight: '16px',
       },
       footer__logo: {
         margin: '0 auto',

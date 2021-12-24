@@ -49,29 +49,17 @@ export const offersStyles = (theme) => {
       offers__title: {
         paddingBottom: '2%',
         ...theme.typography.mobile,
-        position: 'relative',
         '&:after': {
           display: 'none',
         },
       },
       offers__items: {
-        display: 'flex',
-        justifyContent: 'space-around',
         flexDirection: 'column',
         alignItems: 'center',
       },
       offers__item: {
-        textAlign: 'center',
         '& p': {
-          ...theme.typography.describtionPlace,
           marginTop: '10%',
-          '& a': {
-            ...theme.typography.a,
-            color: `${theme.color.generalBlack}`,
-          },
-        },
-        '&:hover': {
-          ...theme.actions.hover,
         },
       },
     },
